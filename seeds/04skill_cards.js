@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
   return knex('skill_cards').del()
     .then(()=> {
       return knex('skill_cards').insert([
-        {id: 1, title: 'cuddeling', description: 'I will cuddle the cuddles out of you',  photo: 'mcDuffie@gmail.com', user_id: 9},
+        {id: 1, title: 'cuddeling', description: 'I will cuddle the cuddles out of you',  photo: 'mcDuffie@gmail.com', user_id: 9, categories_id: 6, environment_id: 5},
         {id: 2, title: 'dancing', description: 'like a baller',  photo: 'mcDuffie@gmail.com', user_id: 4},
         {id: 3, title: 'LED lighting', description: 'like, cool colors and stuff',  photo: 'mcDuffie@gmail.com', user_id: 4},
         {id: 4, title: 'knots', description: 'tying them. and untying them.',  photo: 'mcDuffie@gmail.com', user_id: 1},
