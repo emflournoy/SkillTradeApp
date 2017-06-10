@@ -7,6 +7,8 @@ exports.up = function(knex, Promise) {
     table.string('description').notNullable().defaultTo('');
     table.string('photo').defaultTo('');
     table.integer('user_id').references('users.id').notNullable().onDelete('cascade');
+    table.integer('environment_id').references('environment.id').notNullable().onDelete('cascade');
+    table.integer('categories_id').references('categories.id').notNullable().onDelete('cascade');
   });
 };
 
