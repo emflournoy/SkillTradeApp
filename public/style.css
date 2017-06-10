@@ -21,7 +21,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('./photos/splash-photo.jpg');
+background-image: url('splash-photo.jpg');
   text-align: center;
   color: white;
 }
