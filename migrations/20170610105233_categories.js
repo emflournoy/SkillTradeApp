@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
   .createTable('categories', (table)=>{
     table.increments();
     table.string('type').notNullable().defaultTo('');
-    table.integer('skill_cards_id').references('skill_cards.id').notNullable().onDelete('cascade');
   });
 };
 
