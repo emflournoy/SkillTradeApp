@@ -1,0 +1,24 @@
+
+
+#test{
+  background-color: gray;
+  border-radius: 10px;
+}
+nav{
+  margin-bottom: 40px;
+}
+form{
+  margin: 20px;
+
+}
+.thingy{
+  margin: 20px;
+  text-align: center;
+}
+
+img{
+
+  margin-left: 20%;
+  border-radius: 50%;
+  border: 5px solid black !important;
+}
