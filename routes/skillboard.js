@@ -9,14 +9,15 @@ const bodyParser = require('body-parser');
 
 
 router.get('/skillboard',function(req,res,next){
-  knex('skill_cards')
-    .select(
-      '*'
-    )
-    .orderBy('id')
-    .then(function(result){
-      return res.send(result);
-    });
+  res.send('dog')
+  // knex('skill_cards')
+  //   .select(
+  //     '*'
+  //   )
+  //   .orderBy('id')
+  //   .then(function(result){
+  //     return res.send(result);
+  //   });
 });
 
 

@@ -8,6 +8,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const port = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
 
 
 switch (app.get('env')) {
