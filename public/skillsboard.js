@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
-$.getJSON('http://localhost:3000/skilbuild')
+$.getJSON('http://localhost:3000/skillboard')
     .done((allCards) => {
       createTradeCard(allCards);
     })
@@ -21,7 +21,7 @@ function createTradeCard(arr){
     let indId= 'Card' + `${e.id}`;
     $tradeCard.attr("id", indId);
     $('#tradeCardsContainer').append($tradeCard);
-  })
+  });
 }
 
 

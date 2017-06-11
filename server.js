@@ -38,8 +38,12 @@ app.use(bodyParser.json());
 
 
 const skillboard = require('./routes/skillboard');
-
+const skillManager = require('./routes/skillManager');
+// const profile = require('./routes/profile');
+//
 app.use(skillboard);
+app.use(skillManager);
+// app.use(profile);
 
 app.use((_req, res) => {
   res.sendStatus(404);

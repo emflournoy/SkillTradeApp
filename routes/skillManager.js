@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const express = require('express');
 
@@ -7,15 +7,14 @@ const router = express.Router();
 const knex = require('../knex');
 const bodyParser = require('body-parser');
 
-
-router.get('/skillboard',function(req,res,next){
+router.get('/skillManager/:id', (req, res, next)=>{
   knex('skill_cards')
-    .orderBy('id')
+    .where('user_id', req.params.id)
+    .join('users', 'user_id', 'users.id')
     .then(function(result){
+      console.log(result);
       return res.send(result);
     });
 });
-
-
 
 module.exports = router;
