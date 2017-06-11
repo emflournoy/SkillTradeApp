@@ -25,13 +25,6 @@ switch (app.get('env')) {
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => { //checks for json format
-  if (/json/.test(req.get('Accept'))) {
-    return next();
-  }
-
-  res.sendStatus(406);
-});
 
 const skillboard = require('./routes/skillboard');
 
