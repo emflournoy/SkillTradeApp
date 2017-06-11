@@ -2,12 +2,12 @@ $(document).ready(function() {
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
-$.getJSON('postgres://localhost/skilbuild')
+$.getJSON('http://localhost:3000/skilbuild')
     .done((allCards) => {
       createTradeCard(allCards);
     })
     .fail(() => {
-      Materialize.toast('Unable to retrieve cards', 3000);
+      console.log('not working');
     });
 
 

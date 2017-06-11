@@ -23,6 +23,12 @@ switch (app.get('env')) {
   default:
 }
 
+app.use('/',function(req,res,next){
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow-Headers','*');
+  next();
+});
+
 app.use(bodyParser.json());
 
 
@@ -50,6 +56,14 @@ app.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log('Listening on port', port);
   }
+});
+
+app.use((req, res, next) => { //csrf protection
+  if (/json/.test(req.get('Accept'))) {
+    return next();
+  }
+
+  res.sendStatus(406);
 });
 
 module.exports = app;
