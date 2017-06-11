@@ -17,4 +17,16 @@ router.get('/skillManager/:id', (req, res, next)=>{
     });
 });
 
+router.post('/skillManager/:user_id', (req, res, next)=>{
+  knex('skill_cards')
+    .where('user_id', req.params.user_id)
+    .insert(req.body, '*')
+    .then(function(result){
+      return res.send(result);
+    })
+    .catch((err)=>{
+      return res.status(400).send(err);
+    });
+});
+
 module.exports = router;
