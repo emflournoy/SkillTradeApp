@@ -7,9 +7,10 @@ module.exports = {
     connection: 'postgres://localhost/skilbuild'
   },
 
+
   production: {
     client: 'pg',
-    connection: process.env.DATABSE_URL
+    connection: process.env.DATABASE_URL
   }
 
 };
