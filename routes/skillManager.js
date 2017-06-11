@@ -41,7 +41,18 @@ router.patch('/skillManager/:skill_card_id', (req,res,next) => {
     });
 })
 
-
+router.delete('/skillManager/:skill_card_id', (req,res,next) => {
+  knex('skill_cards')
+    .where('id', req.params.skill_card_id)
+    .returning('*')
+    .del()
+    .then(function(result){
+      return res.send(result);
+    })
+    .catch((err)=>{
+      return res.status(400).send(err);
+    });
+})
 
 
 module.exports = router;
