@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgre://localhost/skilbuild'
+    connection: 'postgres://localhost/skilbuild'
   },
 
 

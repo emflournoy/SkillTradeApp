@@ -8,16 +8,11 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const skillboard = require('./routes/skillboard');
+
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(skillboard);
-app.use((_req, res) => {
-  res.sendStatus(404);
-});
 
 
 switch (app.get('env')) {
@@ -32,9 +27,23 @@ switch (app.get('env')) {
   default:
 }
 
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config();
-}
+
+app.use('/',function(req,res,next){
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow-Headers','*');
+  next();
+});
+
+app.use(bodyParser.json());
+
+
+const skillboard = require('./routes/skillboard');
+
+app.use(skillboard);
+
+app.use((_req, res) => {
+  res.sendStatus(404);
+});
 
 app.get('/', (req, res, next)=>{
   res.render('index');
@@ -43,5 +52,7 @@ app.get('/', (req, res, next)=>{
 app.listen(3000, function(){
   console.log("listening on port 3000");
 });
+
+
 
 module.exports = app;

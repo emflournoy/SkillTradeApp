@@ -8,16 +8,31 @@ const knex = require('../knex');
 const bodyParser = require('body-parser');
 
 
-router.get('/skillboard',function(req,res,next){
+router.get('/skilbuild',function(req,res,next){
   knex('skill_cards')
     .select(
       '*'
     )
     .orderBy('id')
     .then(function(result){
+      console.log(result);
       return res.send(result);
     });
 });
+
+// router.get('/skilbuild/:id',function(req,res,next){
+//   knex('skill_cards')
+//     .where
+//     .select(
+//       '*'
+//     )
+//     .orderBy('id')
+//     .then(function(result){
+//       console.log(result);
+//       return res.send(result);
+//     });
+// });
+
 
 
 module.exports = router;
