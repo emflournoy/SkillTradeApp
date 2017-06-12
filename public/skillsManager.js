@@ -1,3 +1,46 @@
+$(document).ready(function() {
+
+
+$('#skillSubmit').on('click', (event)=> {
+  let skill_card_obj = {
+    title: $('#title-Box').val(),
+    description: $('#descriptionTextBox').val(),
+    photo: $('#photo-Box').val(),
+    user_id: '',
+    categories_id: $('#category-results').val(),
+    environment_id: $('#environment-results').val()
+  };
+//Option 1
+//   $.post( 'http://localhost:3000/skillManager/' + skill_card_obj.user_id)
+//   .done((data) => {
+//     addNewSkill(data);
+//   })
+//   .fail(() => {
+//     console.log('not working');
+//   });
+//Option 2
+// $.ajax({
+//   type: "POST",
+//   url: url,
+//   data: skill_card_obj,
+//   success: success,
+//   dataType: dataType
+// });
+})
+
+
+function addNewSkill(event){
+  let $smBody= $('#sManagerBody');
+    let $skillCard = $("#skillCard").clone();
+    $skillCard.removeAttr("id");
+    let indId= 'skillCard' + `${e.id}`;
+    $skillCard.attr("id", indId);
+    $($smBody).append($skillCard);
+}
+
+
+}); //end of document ready//
+
 // function addStockElement(event) {
 //   //Primary elements
 //   let elementRow = $('<div>').addClass("row stuff");
