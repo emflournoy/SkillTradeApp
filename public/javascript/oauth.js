@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+
+
+
+  window.fbAsyncInit = function() {
+=======
 window.fbAsyncInit = function() {
+>>>>>>> a91e5b3fc979e1da05a5177cc22d8d1f2015e140
     FB.init({
       appId      : '286590885139405',
       status     : true,

@@ -14,6 +14,7 @@ router.get('/skillboard',function(req,res,next){
     .join('users', 'user_id', 'users.id')
     .join('categories', 'categories_id', 'categories.id')
     .then(function(result){
+      console.log(result);
       return res.send(result);
     });
 });
