@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>SkilBoard</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../css/profilestyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/profilestyle.css">
 
     <!-- Latest compiled and minified JavaScript -->
     <script
@@ -58,22 +58,53 @@
     <div class="container">
       <div class="row" id="test">
         <div class="col-sm-4">
-          <form>
-            First name:<br>
-            <input type="text" name="firstname"><br>
-            Last name:<br>
-            <input type="text" name="lastname"><br>
-            Email:<br>
-            <input type="text" name="email"><br>
-            Phone:<br>
-            <input type="tel" name="phone"><br>
-            State:<br>
-            <input type="text" name="state"><br>
-            City:<br>
-            <input type="text" name="city"><br>
-            Zip:<br>
-            <input type="number" name="zip"><br>
+          <form role="form">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="firstname" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="name">first name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="lastname" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="lastname">last name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="tel" class="form-control" id="phone" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="phone">phone</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="state" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="state">state</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="city" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="city">city</label>
+            </div>
+
+            <div class="form-group">
+              <input type="number" class="form-control" id="zip" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="zip">zip code</label>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
           </form>
+
         </div>
         <div class="col-sm-8">
           <p class="thingy">pictures</p>
