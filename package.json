@@ -15,6 +15,7 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "fb": "^2.0.0",
     "jsonwebtoken": "^7.4.1",
     "knex": "^0.13.0",
     "morgan": "^1.8.2",
