@@ -51,35 +51,60 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group row">
-          <label for="example-text-input" class="col-2 col-form-label">Title</label>
+          <label for="title" class="col-2 col-form-label">Title</label>
           <div class="col-10">
-            <input class="form-control" type="text" value="" id="example-text-input">
+            <input class="form-control" type="text" value="Enter Title Here" id="title-Box" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="example-search-input" class="col-2 col-form-label">Category</label>
+          <label for="Category" class="col-2 col-form-label">Category</label>
           <div class="col-10">
-            <input class="form-control" type="search" value="" id="example-search-input">
+            <fieldset name="category" style = "border:none">
+              <select id="category-results" name="" value = "">
+              <option name ="untitled" value="0">-Category Name-</option>
+              <option name ="" value="">Value 1</option>
+              <option name ="" value="">Value 2</option>
+            </select>
+          </fieldset>
+            <!-- <input class="form-control" type="search" value="" id="category-box"> -->
           </div>
         </div>
         <div class="form-group row">
-          <label for="example-email-input" class="col-2 col-form-label">Environment</label>
+          <label for="Environment" class="col-2 col-form-label">Environment</label>
           <div class="col-10">
-            <input class="form-control" type="email" value="" id="example-email-input">
+            <fieldset name="category" style = "border:none">
+              <select id="environment-results" name="" value = "">
+              <option name ="untitled" value="0">-Environment Name-</option>
+              <option name ="" value="">Value 1</option>
+              <option name ="" value="">Value 2</option>
+            </select>
+          </fieldset>
+            <!-- <input class="form-control" type="email" value="" id="environment-box"> -->
           </div>
         </div>
         <div class="form-group row">
-          <label for="example-url-input" class="col-2 col-form-label">Contact</label>
+          <label for="Contact" class="col-2 col-form-label">Contact</label>
           <div class="col-10">
-            <input class="form-control" type="url" value="" id="example-url-input">
+            <fieldset name="contact" style = "border:none">
+              <select id="contact-results" name="" value = "">
+              <option name ="untitled" value="0">-Contact Name-</option>
+              <option name ="" value="">Value 1</option>
+              <option name ="" value="">Value 2</option>
+            </select>
+          </fieldset>
+            <!-- <input class="form-control" type="url" value="" id="contact-Box"> -->
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group row">
-          <label for="example-tel-input" class="col-2 col-form-label">Description</label>
+          <label for="Photo" class="col-2 col-form-label">Photo URL</label>
           <div class="col-10">
-            <input class="form-control" type="tel" value="" id="example-tel-input">
+            <input class="form-control" type="text" value="Paste Photo URL Here" id="photo-Box">
+          </div>
+          <label for="Description" class="col-2 col-form-label">Description</label>
+          <div class="col-10">
+            <textarea id="descriptionTextBox" required></textarea>
           </div>
         </div>
       </div>
