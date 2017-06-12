@@ -1,9 +1,10 @@
-$(document).ready(function(){
+
 
 
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '286590885139405',
+      status     : true,
       cookie     : true,
       xfbml      : true,
       version    : 'v2.8'
@@ -18,4 +19,3 @@ $(document).ready(function(){
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-});
