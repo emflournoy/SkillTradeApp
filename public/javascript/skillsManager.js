@@ -6,18 +6,18 @@ $('#skillSubmit').on('click', (event)=> {
     title: $('#title-Box').val(),
     description: $('#descriptionTextBox').val(),
     photo: $('#photo-Box').val(),
-    user_id: '',
-    categories_id: $('#category-results').val(),
-    environment_id: $('#environment-results').val()
+    user_id: '',//need to access userID
+    categories_id: $('#category-results').val(),//need to access
+    environment_id: $('#environment-results').val()//need to access
   };
 //Option 1
-//   $.post( 'http://localhost:3000/skillManager/' + skill_card_obj.user_id)
-//   .done((data) => {
-//     addNewSkill(data);
-//   })
-//   .fail(() => {
-//     console.log('not working');
-//   });
+  $.post( 'http://localhost:3000/skillManager/' + skill_card_obj.user_id, skill_card_obj)
+  .done((data) => {
+    addNewSkill(data);
+  })
+  .fail(() => {
+    console.log('not working');
+  });
 //Option 2
 // $.ajax({
 //   type: "POST",
