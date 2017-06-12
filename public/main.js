@@ -22,11 +22,11 @@ $(document).ready(function(){
   })
   //
   //
-  function checkLoginState() {
+    function checkLoginState() {
     FB.getLoginStatus(function(response) {
       console.log(response);
       //statusChangeCallback(response);
     });
   }
-  
+
 });
