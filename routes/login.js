@@ -8,20 +8,26 @@ const knex = require('../knex');
 const bodyParser = require('body-parser');
 
 
-
 router.post('/login', function(req,res,next){
-  console.log(req.body);
-  knex('user')
+  knex('users')
   .insert(req.body, '*')
-  .then(function(result){
-    console.log(result);
-    return res.send(result);
+  .then((result)=>{
+    return res.send(result.id);
   })
   .catch((err)=>{
-    res.send(req.body);
-    // return res.status(400).send(err);
+    return res.status(400).send(err);
   });
 });
 
-
+router.get('/login/:id', (req, res, next)=>
+{
+  knex('users')
+  .where('login', req.params.id)
+  .then((data)=>{
+    return res.send(data[0]);
+  })
+  .catch((err)=>{
+    res.status(400).send(err);
+  });
+});
 module.exports = router;

@@ -21,11 +21,8 @@ function createDropdowns(arr, idName, appendTo){
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
     console.log('working');
-  };
+  }
 }
-
-
-
 
 $('#skillSubmit').on('click', (event)=> {
   let skill_card_obj = {
@@ -37,24 +34,23 @@ $('#skillSubmit').on('click', (event)=> {
     environment_id: $('#environment-results').val(),//need to access
     contact: $('#contact-results').val()
   };
-  console.log(skill_card_obj);
+  // console.log(skill_card_obj);
 //Option 1
-  $.post( 'http://localhost:3000/skillManager/' + skill_card_obj.user_id, skill_card_obj)
+$.ajax({
+  contentType: 'application/json',
+  type: "POST",
+  url: '/login',
+  data: JSON.stringify(skill_card_obj),
+  dataType: 'json',
+  })
   .done((data) => {
-    addNewSkill(data);
+    console.log(data);
+    // addNewSkill(data);
   })
   .fail(() => {
     console.log('not working');
   });
-//Option 2
-// $.ajax({
-//   type: "POST",
-//   url: url,
-//   data: skill_card_obj,
-//   success: success,
-//   dataType: dataType
-// });
-})
+});
 
 
 function addNewSkill(event){
@@ -67,17 +63,10 @@ function addNewSkill(event){
 }
 
 
-}); //end of document ready//
-
-
-$(document).ready(function(){
-
-
-
 $("#checklogin").click(function(){
   console.log("checking loging");
     checkLoginState();
-})
+});
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
