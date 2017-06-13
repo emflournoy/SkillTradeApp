@@ -12,6 +12,7 @@ router.post('/login', function(req,res,next){
   knex('users')
   .insert(req.body, '*')
   .then((result)=>{
+    res.cookie('userID', result[0]['id'], {httpsOnly: true});
     return res.send(result.id);
   })
   .catch((err)=>{
@@ -24,6 +25,8 @@ router.get('/login/:id', (req, res, next)=>
   knex('users')
   .where('login', req.params.id)
   .then((data)=>{
+    console.log(data);
+    res.cookie('userID', data[0]['id'], {httpOnly: true});
     return res.send(data[0]);
   })
   .catch((err)=>{
