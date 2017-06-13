@@ -238,6 +238,15 @@ label {
 }
 /*----Modals----------------*/
 
+.modal-header{
+  background-color: #FFAC00;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  border-radius: 3px;
+}
+
 #modalbtn {
   color: white;
   background-color:#FFAC00;
@@ -252,7 +261,7 @@ label {
 
 /* -- nav ------------------------------------- */
 .navbar{
-  background-color: #554e46;
+  background-color: #6EC5B8;
 }
 
 .navbar-brand{
@@ -286,21 +295,24 @@ label {
 
 /*--Empty skillsmanager placeholder----------------------*/
 
-#placeholder-box {
+#placeholder-box,  #soundsLikeFun  {
   background-color: white;
-  color:#6EC5B8;
+  color:#DC5C05;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .inspiration-quote{
-  color:#42a596;
+  color: #554e46;
   font-weight: lighter;
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 30px;
+  padding-top: 15px;
 }
 
 .author{
-  color:#42a596;
+  font-size: 20px;
+  color: #554e46;
 }
 
 /*-- Manager card container ----------------------*/
@@ -366,6 +378,11 @@ label {
   margin-bottom: 30px;
 }
 
-#skillCardBtn {
-  
+.card-header {
+  background-color: #554e46;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 8px;
 }
