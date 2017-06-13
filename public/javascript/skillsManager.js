@@ -65,20 +65,17 @@ $('#skillSubmit').on('click', (event)=> {
 });
 
 function addNewSkill(data){
-
   let userCard = $("#userCard").clone();
   userCard.removeAttr("id");
   let individualID = 'userCard' + `${data.id}`;
   userCard.attr("id", individualID);
-  userCard.child("card-category").text()
+  userCard.child(".card").child("#card-category").text($('#categories').html());
+  userCard.child(".card-block").child("#cardTitle").text(data.title);
+  userCard.child(".card-block").child("#cardEnvironment").text($('#environments').html());
+  userCard.child(".card-block").child("#photo").attr("src", data.photo);
+  userCard.child(".card-block").child("#cardDescription").text(data.description);
+  // userCard.child(".card-block").child("#card-contact").text()
   $('#UserContainer').append($userCard);
-
-  // let $smBody= $('#sManagerBody');
-  // let $skillCard = $("#skillCard").clone();
-  // $skillCard.removeAttr("id");
-  // let indId= 'skillCard' + `${e.id}`;
-  // $skillCard.attr("id", indId);
-  // $($smBody).append($skillCard);
 }
 
 
