@@ -17,39 +17,39 @@
     <!-- OUR SCRIPT -->
     <script src="../javascript/skillsManager.js" type="text/javascript"></script>
 
+    <link rel="stylesheet" href="../css/internalstyle.css">
+
+
   </head>
   <body>
 
 <!-- NAV BAR -->
-    <nav class="navbar navbar-toggleable-md sticky-top navbar-inverse bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">SkilBuild</a>
+  <nav class="navbar navbar-toggleable-md sticky-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+    <a class="navbar-brand" href="#">SkilBuild</a>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="skillsboard.html">Skill Board<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="profile.html">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="skillsManager.html">Skill Manager</a>
-          </li>
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
-      </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="skillsboard.html">Skill Board</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="skillsManager.html">Trade Manager</a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> -->
+
+      </ul>
+    </div>
+  </nav>
 <!-- END NAV BAR -->
-<button id="checklogin">Check</button>
-
-
 
 
 <!-- HEADER -->
@@ -67,74 +67,74 @@
   <div class="row" id="skillCard">
       <div class="col-md-6">
 
-        <div class="form-group row">
-          <label for="title" class="col-2 col-form-label">Title</label>
-          <div class="col-10">
-            <input class="form-control" type="text" value="Enter Title Here" id="title-Box" required>
+        <div class="form-group">
+          <input type="text" class="form-control" id="title-Box" required>
+          <span class="form-highlight"></span>
+          <span class="form-bar"></span>
+          <label class="float-label" for="title">skill title</label>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            select a category
+          </button>
+          <div class="dropdown-menu scrollable-menu" id="categoryDropdown" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="catItem" href="#"></a>
           </div>
         </div>
 
-        <div class="form-group row">
-          <label for="Category" class="col-2 col-form-label">Category</label>
-          <div class="col-10">
-            <fieldset name="category" style = "border:none">
-              <select id="categoryDropdown" name="" value = "" required>
-                <option name ="" value="" id="catItem">Select a Category</option>
-            </select>
-          </fieldset>
+        <br>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            select an environment
+          </button>
+          <div class="dropdown-menu scrollable-menu" id="environmentDropdown" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="envItem" href="#"></a>
           </div>
         </div>
 
-        <div class="form-group row">
-          <label for="Environment" class="col-2 col-form-label">Environment</label>
-          <div class="col-10">
-            <fieldset name="category" style = "border:none">
-              <select id="environmentDropdown" name="" value = "" required>
-                <option name ="" value="" id="envItem">Select an Environment</option>
-            </select>
-          </fieldset>
-          </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="contact-Box" required>
+          <span class="form-highlight"></span>
+          <span class="form-bar"></span>
+          <label class="float-label" for="contact">contact (phone or email)</label>
         </div>
 
-        <div class="form-group row">
-          <label for="Contact" class="col-2 col-form-label">Contact</label>
-          <div class="col-10">
-            <fieldset name="contact" style = "border:none">
-              <select id="contact-results" name="" value = "" required>
-              <option name ="untitled" value="0">-Contact Name-</option>
-              <option name ="" value="">Value 1</option>
-              <option name ="" value="">Value 2</option>
-            </select>
-          </fieldset>
-            <!-- <input class="form-control" type="url" value="" id="contact-Box"> -->
-          </div>
-        </div>
       </div>
+
       <div class="col-md-6">
-        <div class="form-group row">
-          <label for="Photo" class="col-2 col-form-label">Photo URL</label>
-          <div class="col-10">
-            <input class="form-control" type="text" value="Paste Photo URL Here" id="photo-Box">
-          </div>
-          <label for="Description" class="col-2 col-form-label">Description</label>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="photo-box" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="photo">enter photo URL</label>
+            </div>
+
+          <!-- <label for="Description" class="col-2 col-form-label">Description</label>
           <div class="col-10">
             <textarea id="descriptionTextBox" required></textarea>
+          </div> -->
+
+          <div class="form-group">
+            <input type="textarea" class="form-control" id="descriptionTextBox" required>
+            <span class="form-highlight"></span>
+            <span class="form-bar"></span>
+            <label class="float-label" for="description">description</label>
           </div>
-        </div>
-      </div>
+
+    </div>
+
+    <div class="col-md-2 col-xs-4">
+      <button type="button" id="submit" class="btn btn-outline-* btn-lg">submit</button>
     </div>
 <!-- END FORM -->
 
 
-    <div class="col-md-2 col-xs-4">
-      <button type="submit" class="addBtn btn col-md-4 col-xs-4" id="skillSubmit">Submit</button>
-    </div>
-
-
-
 
   </div>
-
+</div>
 
 
   <!-- CARD DIVIDER -->
@@ -146,11 +146,11 @@
 
 
 
-<!-- FOOTER -->
-    <nav class="navbar bottom navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="#">Fixed bottom</a>
-    </nav>
-<!-- END FOOTER -->
+  <!-- FOOTER -->
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">SkilBuild</a>
+      </nav>
+  <!-- END FOOTER -->
 
 
 

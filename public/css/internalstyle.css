@@ -1,35 +1,12 @@
 
-
-/*#test{
-  background-color: gray;
-  border-radius: 10px;
-}
-nav{
-  margin-bottom: 40px;
-}
-form{
-  margin: 20px;
-
-}
-.thingy{
-  margin: 20px;
-  text-align: center;
-}*/
-
-/*img{
-
-  margin-left: 20%;
-  border-radius: 50%;
-  border: 5px solid black !important;
-}*/
-
-
 /*FORM STYLING */
 
-/* -- import Bootstrap v3 --------------------------- */
-/* -- import Bootstrap docs ------------------------- */
-/* -- import Roboto Font ---------------------------- */
 @import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+@import 'https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister';
+@import 'https://fonts.googleapis.com/css?family=Cabin+Sketch';
+@import 'https://fonts.googleapis.com/css?family=Nixie+One';
+
+
 /* -- Body style ------------------------------------ */
 
 /* -- Input styles ---------------------------------- */
@@ -53,7 +30,7 @@ form{
   padding: 0;
   background-color: transparent;
   box-shadow: none;
-  border-bottom: 1px solid #757575;
+  border-bottom: 1px solid #6EC5B8;
 }
 .input-group .form-control {
   position: relative;
@@ -63,16 +40,17 @@ form{
   margin-bottom: 0;
 }
 .form-control:focus {
-  border-color: #757575;
+  border-color: #6EC5B8;
   outline: none;
   box-shadow: none;
 }
+
 
 /* -- label styles ---------------------------------- */
 label {
   position: absolute;
   top: -18px;
-  color: #999;
+  color: #6EC5B8;
   font-size: 12px;
   font-weight: 300;
 
@@ -120,13 +98,9 @@ label {
 }
 
 
-
-
 .form-control:valid ~ .control-label {
 
 }
-
-
 
 /* input addon ---*/
 .input-group-addon {
@@ -147,27 +121,13 @@ label {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .form-inline .form-group {
-    margin-top: 16px;
-  }
-
-  .input-group-btn, .input-group .form-control, .input-group-addon, .form-inline .input-group {
-    display: inline-block;
-  }
-
-  .input-group {
-    width: auto;
-  }
-}
-
 /* -- bar styles -------------------------------------- */
 .form-bar {
   position: relative;
   display: block;
   width: 100%;
 }
-.form-bar:before, .form-bar:after 	{
+.form-bar:before, .form-bar:after     {
   content: '';
   height: 1px;
   width: 0;
@@ -209,26 +169,23 @@ label {
 
 /* -- highlighter animation --------------------------- */
 @-webkit-keyframes inputHighlighter {
-  from { background:#5264AE; }
+  from { background:#6EC5B8; }
   to { width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
-  from { background:#5264AE; }
+  from { background:#6EC5B8; }
   to { width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
-  from { background:#5264AE; }
+  from { background:#6EC5B8; }
   to { width:0; background:transparent; }
 }
-
 
 @media (min-width: 768px) {
   .form-inline .radio label, .form-inline .checkbox label {
     padding-left: 5px;
   }
 }
-
-
 
 .form-control-static {
   font-size: 16px;
@@ -239,11 +196,74 @@ label {
   border-bottom-style: dashed;
 }
 
-
-
 #focusedInput {
   border-color: #ccc;
   border-color: rgba(82,168,236,.8);
   outline: 0;
   box-shadow: none;
+}
+
+
+/* -- buttons --------------------------------- */
+#submit {
+  background-color: #DC5C05;
+  border-color: #ccc;
+  width: 150px;
+  font-size: 23px;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+#submit:hover{
+  background-color: #FF9000;
+  border-color: #ccc;
+  color: rgb(54, 54, 54);
+  font-weight: bold;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 150px;
+    overflow-x: hidden;
+}
+
+
+/* -- headers --------------------------------- */
+.jumbotron{
+  background-color: #C7BAA7;
+  padding: 1%;
+}
+
+.jumbotron h1{
+  font-family: 'Cabin Sketch', cursive;
+}
+
+/* -- nav ------------------------------------- */
+.navbar{
+  background-color: #554e46;
+}
+
+.navbar-brand{
+  color: white;
+  font-size: 40px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.nav-link{
+  color: white;
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.navbar-brand:hover{
+  color: #FFAC00;
+}
+
+.nav-link:hover{
+  color: #DC5C05;
+}
+
+
+#blankTradeCard{
+  display: none;
 }

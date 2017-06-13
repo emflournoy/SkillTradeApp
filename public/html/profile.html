@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>SkilBoard</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="css/profilestyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/internalstyle.css">
 
     <!-- Latest compiled and minified JavaScript -->
     <script
@@ -18,31 +19,33 @@
   </head>
   <body>
 
-    <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">SkilTrade</a>
+<!-- NAV BAR -->
+  <nav class="navbar navbar-toggleable-md sticky-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="skillsboard.html">Skill Board <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="profile.html">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="skillsManager.html">Skill Manager</a>
-          </li>
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
+    <a class="navbar-brand" href="#">SkilBuild</a>
 
-        </form> -->
-      </div>
-    </nav>
-    <!--/.Navbar-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="skillsboard.html">Skill Board</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="skillsManager.html">Trade Manager</a>
+        </li>
+
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> -->
+
+      </ul>
+    </div>
+  </nav>
+<!-- END NAV BAR -->
 
     <!-- HEADER -->
         <div class="jumbotron jumbotron-fluid">
@@ -54,32 +57,83 @@
     <!-- END HEADER -->
 
 
+<!-- FORM -->
     <div class="container">
       <div class="row" id="test">
         <div class="col-sm-4">
-          <form>
-            First name:<br>
-            <input type="text" name="firstname"><br>
-            Last name:<br>
-            <input type="text" name="lastname"><br>
-            Email:<br>
-            <input type="text" name="email"><br>
-            Phone:<br>
-            <input type="tel" name="phone"><br>
-            State:<br>
-            <input type="text" name="state"><br>
-            City:<br>
-            <input type="text" name="city"><br>
-            Zip:<br>
-            <input type="number" name="zip"><br>
+          <form role="form">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="firstname" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="name">first name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="lastname" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="lastname">last name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="tel" class="form-control" id="phone" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="phone">phone</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="state" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="state">state</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="city" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="city">city</label>
+            </div>
+
+            <div class="form-group">
+              <input type="number" class="form-control" id="zip" required>
+              <span class="form-highlight"></span>
+              <span class="form-bar"></span>
+              <label class="float-label" for="zip">zip code</label>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
           </form>
+
         </div>
         <div class="col-sm-8">
-          <p class="pictureheading">pictures</p>
+          <p class="thingy">pictures</p>
           <img src="https://apolotheo.files.wordpress.com/2016/11/doofus.jpg?w=648" alt="Smiley face" height="200" width="200">
         </div>
       </div>
     </div>
+  <!-- END FORM -->
+
+
+
+  <!-- CARD DIVIDER -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    </div>
+  </div>
+  <!-- END CARD DIVIDER -->
+
+
+
+  <!-- FOOTER -->
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">SkilBuild</a>
+      </nav>
+  <!-- END FOOTER -->
+
 
 <script src="javascript/oauth.js" type="text/javascript"></script>
 <script src="javascript/profile.js" type="text/javascript"></script>
