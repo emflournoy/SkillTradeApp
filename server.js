@@ -8,7 +8,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-
+const cookieParser= require('cookie-parser');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
@@ -35,6 +35,7 @@ app.use('/',function(req,res,next){
 });
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 
 const skillboard = require('./routes/skillboard');
