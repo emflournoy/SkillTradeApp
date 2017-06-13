@@ -259,6 +259,11 @@ label {
   border-color: white;
 }
 
+.modal-body {
+  min-height: 550px;
+  overflow-y: auto;
+}
+
 /* -- nav ------------------------------------- */
 .navbar{
   background-color: #6EC5B8;
