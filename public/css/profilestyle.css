@@ -1,29 +1,4 @@
 
-
-/*#test{
-  background-color: gray;
-  border-radius: 10px;
-}
-nav{
-  margin-bottom: 40px;
-}
-form{
-  margin: 20px;
-
-}
-.thingy{
-  margin: 20px;
-  text-align: center;
-}*/
-
-/*img{
-
-  margin-left: 20%;
-  border-radius: 50%;
-  border: 5px solid black !important;
-}*/
-
-
 /*FORM STYLING */
 
 /* -- import Bootstrap v3 --------------------------- */
@@ -67,6 +42,7 @@ form{
   outline: none;
   box-shadow: none;
 }
+
 
 /* -- label styles ---------------------------------- */
 label {
@@ -147,27 +123,13 @@ label {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .form-inline .form-group {
-    margin-top: 16px;
-  }
-
-  .input-group-btn, .input-group .form-control, .input-group-addon, .form-inline .input-group {
-    display: inline-block;
-  }
-
-  .input-group {
-    width: auto;
-  }
-}
-
 /* -- bar styles -------------------------------------- */
 .form-bar {
   position: relative;
   display: block;
   width: 100%;
 }
-.form-bar:before, .form-bar:after 	{
+.form-bar:before, .form-bar:after     {
   content: '';
   height: 1px;
   width: 0;

@@ -49,9 +49,6 @@
 <!-- END NAV BAR -->
 
 
-<button id="checklogin">Check</button>
-
-
 <!-- HEADER -->
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
@@ -99,27 +96,23 @@
         <div class="form-group row">
           <label for="Contact" class="col-2 col-form-label">Contact</label>
           <div class="col-10">
-            <fieldset name="contact" style = "border:none">
-              <select id="contact-results" name="" value = "" required>
-              <option name ="untitled" value="0">-Contact Name-</option>
-              <option name ="" value="">Value 1</option>
-              <option name ="" value="">Value 2</option>
-            </select>
-          </fieldset>
-            <!-- <input class="form-control" type="url" value="" id="contact-Box"> -->
+            <input class="form-control" type="url" value="" id="contact-Box" required>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group row">
+
           <label for="Photo" class="col-2 col-form-label">Photo URL</label>
           <div class="col-10">
             <input class="form-control" type="text" value="Paste Photo URL Here" id="photo-Box">
           </div>
+
           <label for="Description" class="col-2 col-form-label">Description</label>
           <div class="col-10">
             <textarea id="descriptionTextBox" required></textarea>
           </div>
+
         </div>
       </div>
     </div>
