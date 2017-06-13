@@ -7,6 +7,23 @@ const router = express.Router();
 const knex = require('../knex');
 const bodyParser = require('body-parser');
 
+
+//FORM DROPDOWNS (arr of 2arr of objs)====================
+router.get('/skillManager', function(req, res) {
+  console.log("it was triggered");
+  let allArr = [];
+  knex('categories')
+  .then((data)=>{
+    allArr.push(data);
+    knex('environment')
+      .then((data2)=>{
+        allArr.push(data2);
+        res.send(allArr);
+      })
+    })
+  });
+
+
 router.get('/skillManager/:id', (req, res, next)=>{
   knex('skill_cards')
     .where('user_id', req.params.id)
