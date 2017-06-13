@@ -358,3 +358,14 @@ label {
 #UserCard {
   display: none;
 }
+
+/*--Skillcards on Trade Manager-----------------*/
+
+#skillCard {
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+#skillCardBtn {
+  
+}
