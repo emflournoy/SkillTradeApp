@@ -1,14 +1,19 @@
 $(document).ready(function() {
 
 
+$('#modalbtn').on('click', (event)=>{
+  $('.modal').modal('show');
+});
+
+
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
-$.getJSON('http://localhost:3000/skillManager')
+$.getJSON('/skillManager')
     .done((catsEnvArr) => {
       createDropdowns(catsEnvArr[0], 'catItem', 'categoryDropdown');
       createDropdowns(catsEnvArr[1], 'envItem', 'environmentDropdown');
     })
     .fail(() => {
-      console.log('not working');
+      console.log('not loading API');
     });
 
 //POPULATE FORM DROPDOWNS==========================
@@ -20,59 +25,61 @@ function createDropdowns(arr, idName, appendTo){
     $clonedItem.attr("id", indId);
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
-    console.log('working');
   }
 }
+
+
+$('#categoryDropdown').on('click', function(event){
+    $('#categories').html(event.target.text);
+});
+
+$('#environmentDropdown').on('click', function(event){
+    $('#environments').html(event.target.text);
+});
+
+
 
 $('#skillSubmit').on('click', (event)=> {
   let skill_card_obj = {
     title: $('#title-Box').val(),
     description: $('#descriptionTextBox').val(),
-    photo: $('#photo-Box').val(),
-    user_id: 'dog',//need to access userID
-    categories_id: $('#category-results').val(),//need to access
-    environment_id: $('#environment-results').val(),//need to access
-    contact: $('#contact-results').val()
+    photo: $('#photo-box').val(),
+    categories_id: 1,// $('#category-results').val(),//need to access
+    environment_id: 1, //$('#environment-results').val(),//need to access
+    // contact: $('#contact-Box').val()
   };
-  // console.log(skill_card_obj);
-//Option 1
-$.ajax({
-  contentType: 'application/json',
-  type: "POST",
-  url: '/login',
-  data: JSON.stringify(skill_card_obj),
-  dataType: 'json',
+  $.ajax({
+    contentType: 'application/json',
+    type: "POST",
+    url: '/skillManager',
+    data: JSON.stringify(skill_card_obj),
+    dataType: 'json',
   })
   .done((data) => {
     console.log(data);
-    // addNewSkill(data);
+    addNewSkill(data);
   })
   .fail(() => {
     console.log('not working');
   });
 });
 
+function addNewSkill(data){
 
-function addNewSkill(event){
-  let $smBody= $('#sManagerBody');
-    let $skillCard = $("#skillCard").clone();
-    $skillCard.removeAttr("id");
-    let indId= 'skillCard' + `${e.id}`;
-    $skillCard.attr("id", indId);
-    $($smBody).append($skillCard);
+  let userCard = $("#userCard").clone();
+  userCard.removeAttr("id");
+  let individualID = 'userCard' + `${data.id}`;
+  userCard.attr("id", individualID);
+  userCard.child("card-category").text()
+  $('#UserContainer').append($userCard);
+
+  // let $smBody= $('#sManagerBody');
+  // let $skillCard = $("#skillCard").clone();
+  // $skillCard.removeAttr("id");
+  // let indId= 'skillCard' + `${e.id}`;
+  // $skillCard.attr("id", indId);
+  // $($smBody).append($skillCard);
 }
 
-
-$("#checklogin").click(function(){
-  console.log("checking loging");
-    checkLoginState();
-});
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    console.log(response);
-    //statusChangeCallback(response);
-  });
-}
 
 });

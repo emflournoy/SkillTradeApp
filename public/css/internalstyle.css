@@ -236,6 +236,19 @@ label {
 .jumbotron h1{
   font-family: 'Cabin Sketch', cursive;
 }
+/*----Modals----------------*/
+
+#modalbtn {
+  color: white;
+  background-color:#FFAC00;
+  border-color: white;
+}
+
+#modalbtn:hover {
+  color: white;
+  background-color: #6EC5B8;
+  border-color: white;
+}
 
 /* -- nav ------------------------------------- */
 .navbar{
@@ -259,6 +272,8 @@ label {
   color: #FFAC00;
 }
 
+
+
 .nav-link:hover{
   color: #DC5C05;
 }
@@ -266,4 +281,23 @@ label {
 
 #blankTradeCard{
   display: none;
+}
+
+/*--Empty skillsmanager placeholder----------------------*/
+
+#placeholder-box {
+  background-color: white;
+  color:#6EC5B8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.inspiration-quote{
+  color:#42a596;
+  font-weight: lighter;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.author{
+  color:#42a596;
 }

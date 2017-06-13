@@ -109,7 +109,6 @@ $(document).ready(function(){
       })
       .done((data) => {
         sbUserId.push(data)
-        console.log(sbUserId);
       })
       .fail(() => {
         console.log('not working');
