@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 $('#modalbtn').on('click', (event)=>{
-  console.log('button clicked');
   $('.modal').modal('show');
 });
 
@@ -12,7 +11,7 @@ $.getJSON('http://localhost:3000/skillManager')
       createDropdowns(catsEnvArr[1], 'envItem', 'environmentDropdown');
     })
     .fail(() => {
-      console.log('not working');
+      console.log('not loading API');
     });
 
 //POPULATE FORM DROPDOWNS==========================
@@ -24,9 +23,19 @@ function createDropdowns(arr, idName, appendTo){
     $clonedItem.attr("id", indId);
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
-    console.log('working');
   }
 }
+
+$('#categoryDropdown').on('click', function(event){
+    $('#categories').html(event.target.text);
+});
+
+$('#environmentDropdown').on('click', function(event){
+    $('#environments').html(event.target.text);
+});
+
+
+
 
 $('#skillSubmit').on('click', (event)=> {
   let skill_card_obj = {
