@@ -272,15 +272,16 @@ label {
   color: #FFAC00;
 }
 
-
-
 .nav-link:hover{
   color: #DC5C05;
 }
 
-
 #blankTradeCard{
   display: none;
+}
+
+#footer{
+  top: 40px;
 }
 
 /*--Empty skillsmanager placeholder----------------------*/
@@ -300,4 +301,56 @@ label {
 
 .author{
   color:#42a596;
+}
+
+/*-- Manager card container ----------------------*/
+
+.card-block{
+  color:#42a596;
+  font-weight: lighter;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  border-color: #DC5C05;
+  background-color: #f5eee5;
+}
+
+.card-block p{
+  color: #554e46;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.card-block img{
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+}
+
+#card-category{
+  background-color: #DC5C05;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 8px;
+}
+
+.card-block .btn{
+  border-color: #DC5C05;
+  background-color: #DC5C05;
+  color: white;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.card-block .btn:hover{
+  border-color: #FFAC00;
+  background-color: #FFAC00;
+}
+
+#cardTopSection{
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+
+#titleSection{
+  padding-top: 20px;
 }
