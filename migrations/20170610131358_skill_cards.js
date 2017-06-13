@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('title').notNullable().defaultTo('');
     table.string('description').notNullable().defaultTo('');
-    table.string('photo').defaultTo('');
+    table.string('photo', 'char(1000)').defaultTo('');
     table.integer('user_id').references('users.id').notNullable().onDelete('cascade');
     table.integer('environment_id').references('environment.id').notNullable().onDelete('cascade');
     table.integer('categories_id').references('categories.id').notNullable().onDelete('cascade');

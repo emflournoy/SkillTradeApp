@@ -67,19 +67,50 @@ $(document).ready(function(){
    };
 
    $('#login').click(function(){
+     checkLoginState();
     var loginResponse;
     function checkLoginState() {
       FB.getLoginStatus(function(response) {
-          loginResponse = response.authResponse.userID;
-          userInputs.login = loginResponse;
+        console.log(response, "response when checking if logged");
+          if(response.status == 'connected' && response.status != undefined){
           loggedin = true;
+          loginResponse = response.authResponse.userID;
+          userInputs.login = Number(loginResponse);
           return userInputs.login;
+          }
+          else{
+            loggedin = false;
+          }
+
       });
     }
-    checkLoginState();
-    if(!loggedin){
+    console.log(loggedin);
+    if(loggedin){
+
+      //TODO check if they already have an account if not make one THEN redirect
+
+      $.ajax({
+        contentType: 'application/json',
+        type: "POST",
+        url: '/login',
+        data: JSON.stringify(userInputs),
+        dataType: 'json',
+      })
+      .done((user) => {
+        console.log(user);
+      })
+      .fail((err) => {
+        console.log(err,'not working');
+      });
+      window.location.replace("html/skillsManager.html");
+      return;
+    }else if (!loggedin){
       FB.login(function(inResponse){
+        // checkLoginState();
+        console.log(inResponse.status);
+        checkLoginState();
           if (inResponse.status == 'connected'){
+
             $.ajax({
               contentType: 'application/json',
               type: "POST",
@@ -93,25 +124,14 @@ $(document).ready(function(){
             .fail(() => {
               console.log('not working');
             });
-            window.location.replace("html/skillsManager.html")
+
           }
       },{scope: 'public_profile'})
+        // window.location.replace("html/skillsManager.html")
+      return;
       //TODO check if they already have an account if not make one THEN redirect
-    }else if (loggedin){
-      //TODO check if they already have an account if not make one THEN redirect
-      $.ajax({
-        contentType: 'application/json',
-        type: "GET",
-        url: '/login/' + loginResponse,
-        dataType: 'json'
-      })
-      .done((data) => {
-        sbUserId.push(data)
-      })
-      .fail(() => {
-        console.log('not working');
-      });
-     window.location.replace("html/skillsManager.html")
+
+
   } else {
     console.log('not sure');
   }
