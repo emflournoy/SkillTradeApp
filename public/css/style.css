@@ -8,9 +8,9 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
-  border-color: #F05F40;
+  border-color: #DC5C05;
   border-width: 3px;
-  max-width: 150px;
+  max-width: 250px;
 }
 header {
   position: relative;
@@ -44,7 +44,7 @@ header .header-content .header-content-inner hr {
 header .header-content .header-content-inner p {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 50px;
 }
 @media (min-width: 768px) {
@@ -72,5 +72,21 @@ header .header-content .header-content-inner p {
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+    color: rgb(230, 227, 227);
   }
+}
+
+.btn {
+  background-color: rgba(8, 8, 8, 0.61);
+  border-color: #ccc;
+  width: 150px;
+  font-size: 23px;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.btn:hover{
+  background-color: rgba(221, 93, 6, 0.69);
+  border-color: #ccc;
+  color: rgb(54, 54, 54);
+  font-weight: bold;
 }
