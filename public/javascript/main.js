@@ -100,7 +100,7 @@ $(document).ready(function(){
         console.log(user);
       })
       .fail((err) => {
-        console.log(err,'not working');
+        console.log('not working');
       });
       window.location.replace("html/skillsManager.html");
       return;
