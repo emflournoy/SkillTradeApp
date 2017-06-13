@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbd108fe3a5efcc1c9cc46fdb50fd289d5855624
 $(document).ready(function(){
 
 
