@@ -59,14 +59,14 @@ $(document).ready(function(){
             // toggleVisible();
             // generateFriends(inResponse.authResponse.userID);
             // generateMe();
-            $.getJSON('http://localhost:3000/login')
-                .done((allCards) => {
-                  console.log("requeset");;
-                })
-                .fail(() => {
-                  console.log('not working');
-                });
-            // window.location.replace("html/skillsManager.html")
+            // $.getJSON('http://localhost:3000/login')
+            //     .done((allCards) => {
+            //       console.log("requeset");;
+            //     })
+            //     .fail(() => {
+            //       console.log('not working');
+            //     });
+            window.location.replace("html/skillsManager.html")
           }
 
         },{scope: 'public_profile'})
@@ -76,14 +76,14 @@ $(document).ready(function(){
       }
       else{
         //TODO check if they already have an account if not make one THEN redirect
-      //  window.location.replace("html/skillsManager.html")
-      $.getJSON('http://localhost:3000/login')
-          .done((allCards) => {
-            console.log("requeset");;
-          })
-          .fail(() => {
-            console.log('not working');
-          });
+       window.location.replace("html/skillsManager.html")
+      // $.getJSON('http://localhost:3000/login')
+      //     .done((allCards) => {
+      //       console.log("requeset");;
+      //     })
+      //     .fail(() => {
+      //       console.log('not working');
+      //     });
       }
     });
 
