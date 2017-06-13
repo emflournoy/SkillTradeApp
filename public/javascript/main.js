@@ -49,24 +49,55 @@ $(document).ready(function(){
   // // //
   // checkLoginState();
 
+
+
   var loggedin;
 
+  var userInputs = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: 0,
+    state: '',
+    city: '',
+    zip: 0,
+    avatar: '',
+    login: '',
+    hashed_password: ''
+   };
+
     $('#login').click(function(){
+
+    var response;
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            response = response.authResponse.userID;
+            userInputs.login = response;
+            return userInputs.login;
+          });
+      }
+
       checkLoginState();
+
       if(!loggedin){
         FB.login(function(inResponse){
             if (inResponse.status == 'connected'){
-            // toggleVisible();
-            // generateFriends(inResponse.authResponse.userID);
-            // generateMe();
-            $.getJSON('http://localhost:3000/login')
-                .done((allCards) => {
-                  console.log("requeset");;
-                })
-                .fail(() => {
-                  console.log('not working');
-                });
-            // window.location.replace("html/skillsManager.html")
+            console.log(JSON.stringify(userInputs));
+            $.ajax({
+              contentType: 'application/json',
+              type: "POST",
+              url: '/login',
+              data: JSON.stringify(userInputs),
+              dataType: 'json',
+            })
+              .done((user) => {
+                console.log(user);
+              })
+              .fail(() => {
+                console.log('not working');
+              });
+            window.location.replace("html/skillsManager.html")
           }
 
         },{scope: 'public_profile'})
@@ -76,14 +107,21 @@ $(document).ready(function(){
       }
       else{
         //TODO check if they already have an account if not make one THEN redirect
-      //  window.location.replace("html/skillsManager.html")
-      $.getJSON('http://localhost:3000/login')
-          .done((allCards) => {
-            console.log("requeset");;
-          })
-          .fail(() => {
-            console.log('not working');
-          });
+       window.location.replace("html/skillsManager.html")
+      console.log(JSON.stringify(userInputs));
+      $.ajax({
+        contentType: 'application/json',
+        type: "POST",
+        url: '/login',
+        data: JSON.stringify(userInputs),
+        dataType: 'json',
+      })
+        .done((allCards) => {
+          console.log("request");
+        })
+        .fail(() => {
+          console.log('not working');
+        });
       }
     });
 

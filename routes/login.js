@@ -9,14 +9,19 @@ const bodyParser = require('body-parser');
 
 
 
-router.get('/login', function(req,res,next){
-  // knex('user').
-// return res.send("tried to get me but you cant hahaha");
-//   console.log("tried to get me but you cant hahaha");
-//   next();
-})
-
-
+router.post('/login', function(req,res,next){
+  console.log(req.body);
+  knex('user')
+  .insert(req.body, '*')
+  .then(function(result){
+    console.log(result);
+    return res.send(result);
+  })
+  .catch((err)=>{
+    res.send(req.body);
+    // return res.status(400).send(err);
+  });
+});
 
 
 module.exports = router;
