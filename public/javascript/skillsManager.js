@@ -38,7 +38,6 @@ $('#environmentDropdown').on('click', function(event){
 });
 
 
-// =======API CALL TO MAKE SKILL CARD===============
 
 $('#skillSubmit').on('click', (event)=> {
   let skill_card_obj = {
@@ -65,13 +64,21 @@ $('#skillSubmit').on('click', (event)=> {
   });
 });
 
-function addNewSkill(event){
-  let $smBody= $('#sManagerBody');
-  let $skillCard = $("#skillCard").clone();
-  $skillCard.removeAttr("id");
-  let indId= 'skillCard' + `${e.id}`;
-  $skillCard.attr("id", indId);
-  $($smBody).append($skillCard);
+function addNewSkill(data){
+
+  let userCard = $("#userCard").clone();
+  userCard.removeAttr("id");
+  let individualID = 'userCard' + `${data.id}`;
+  userCard.attr("id", individualID);
+  userCard.child("card-category").text()
+  $('#UserContainer').append($userCard);
+
+  // let $smBody= $('#sManagerBody');
+  // let $skillCard = $("#skillCard").clone();
+  // $skillCard.removeAttr("id");
+  // let indId= 'skillCard' + `${e.id}`;
+  // $skillCard.attr("id", indId);
+  // $($smBody).append($skillCard);
 }
 
 
