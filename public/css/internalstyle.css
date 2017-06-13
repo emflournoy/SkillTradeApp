@@ -236,10 +236,37 @@ label {
 .jumbotron h1{
   font-family: 'Cabin Sketch', cursive;
 }
+/*----Modals----------------*/
+
+.modal-header{
+  background-color: #FFAC00;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  border-radius: 3px;
+}
+
+#modalbtn {
+  color: white;
+  background-color:#FFAC00;
+  border-color: white;
+}
+
+#modalbtn:hover {
+  color: white;
+  background-color: #6EC5B8;
+  border-color: white;
+}
+
+.modal-body {
+  min-height: 550px;
+  overflow-y: auto;
+}
 
 /* -- nav ------------------------------------- */
 .navbar{
-  background-color: #554e46;
+  background-color: #6EC5B8;
 }
 
 .navbar-brand{
@@ -259,24 +286,108 @@ label {
   color: #FFAC00;
 }
 
-#modalbtn {
-  color: #554e46;
-  background-color:#FFAC00;
-  border-color: #554e46;
-}
-
-#modalbtn:hover {
-  color: white;
-  background-color: #6EC5B8;
-  border-color: white;
-}
-
-
 .nav-link:hover{
   color: #DC5C05;
 }
 
-
 #blankTradeCard{
   display: none;
+}
+
+#footer{
+  top: 40px;
+}
+
+/*--Empty skillsmanager placeholder----------------------*/
+
+#placeholder-box,  #soundsLikeFun  {
+  background-color: white;
+  color:#DC5C05;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.inspiration-quote{
+  color: #554e46;
+  font-weight: lighter;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+.author{
+  font-size: 20px;
+  color: #554e46;
+}
+
+/*-- Manager card container ----------------------*/
+
+.card-block{
+  color:#42a596;
+  font-weight: lighter;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  border-color: #DC5C05;
+  background-color: #f5eee5;
+}
+
+.card-block p{
+  color: #554e46;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.card-block img{
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+}
+
+#card-category{
+  background-color: #DC5C05;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 8px;
+}
+
+.card-block .btn{
+  border-color: #DC5C05;
+  background-color: #DC5C05;
+  color: white;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.card-block .btn:hover{
+  border-color: #FFAC00;
+  background-color: #FFAC00;
+}
+
+#cardTopSection{
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+
+#titleSection{
+  padding-top: 20px;
+}
+
+#UserCard {
+  display: none;
+}
+
+/*--Skillcards on Trade Manager-----------------*/
+
+#skillCard {
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: #554e46;
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  font-family: 'Cabin Sketch', cursive;
+  padding: 8px;
 }
