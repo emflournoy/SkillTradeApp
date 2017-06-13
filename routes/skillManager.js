@@ -34,10 +34,12 @@ router.get('/skillManager', (req, res, next)=>{
 });
 
 router.post('/skillManager', (req, res, next)=>{
-  req.body.user_id = req.cookies.userID;
+  req.body.user_id = Number(req.cookies.userID);
+  console.log(req.body);
   knex('skill_cards')
     .insert(req.body, '*')
     .then(function(result){
+      console.log(result);
       return res.send(result);
     })
     .catch((err)=>{
