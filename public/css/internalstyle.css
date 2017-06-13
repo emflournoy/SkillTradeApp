@@ -254,3 +254,11 @@ label {
   font-size: 25px;
   font-weight: lighter;
 }
+
+.navbar-brand:hover{
+  color: #FFAC00;
+}
+
+.nav-link:hover{
+  color: #DC5C05;
+}
