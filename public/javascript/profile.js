@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> a91e5b3fc979e1da05a5177cc22d8d1f2015e140
 $(document).ready(function(){
 
 
