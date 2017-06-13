@@ -17,6 +17,7 @@ $(document).ready(function() {
 //API CALL FUNCTION TO LOAD ALL CARDS====================
 $.getJSON('http://localhost:3000/skillboard')
     .done((allCards) => {
+      console.log(allCards);
       createTradeCard(allCards);
     })
     .fail(() => {
@@ -33,6 +34,11 @@ function createTradeCard(arr){
     $tradeCard.removeAttr("id");
     let indId= 'Card' + `${e.id}`;
     $tradeCard.attr("id", indId);
+    // Put in content from api call
+    let $title = $tradeCard.find("#cardTitle");
+      $title.text(e.title);
+    let $text = $tradeCard.find("#cardText");
+      $text.text(e.description);
     $('#tradeCardsContainer').append($tradeCard);
   });
 }

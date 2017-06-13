@@ -262,3 +262,8 @@ label {
 .nav-link:hover{
   color: #DC5C05;
 }
+
+
+#blankTradeCard{
+  display: none;
+}
