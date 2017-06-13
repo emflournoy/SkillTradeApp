@@ -40,9 +40,11 @@ app.use(bodyParser.json());
 const skillboard = require('./routes/skillboard');
 const skillManager = require('./routes/skillManager');
 const profile = require('./routes/profile');
+const login = require('./routes/login');
 
 
 
+app.use(login);
 app.use(skillboard);
 app.use(skillManager);
 app.use(profile);
