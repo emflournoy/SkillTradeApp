@@ -259,6 +259,19 @@ label {
   color: #FFAC00;
 }
 
+#modalbtn {
+  color: #554e46;
+  background-color:#FFAC00;
+  border-color: #554e46;
+}
+
+#modalbtn:hover {
+  color: white;
+  background-color: #6EC5B8;
+  border-color: white;
+}
+
+
 .nav-link:hover{
   color: #DC5C05;
 }

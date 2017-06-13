@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+
+$('#modalbtn').on('click', (event)=>{
+  console.log('button clicked');
+  $('.modal').modal('show');
+});
+
+
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 $.getJSON('/skillManager')
     .done((catsEnvArr) => {

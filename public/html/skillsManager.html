@@ -57,79 +57,105 @@
       <div class="container">
         <h1 class="display-3">SkilManager</h1>
         <p class="lead">You're a smart cookie. You've got so many skills. Let's get them out into the world.</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="modalbtn" data-toggle="modal" data-target="#exampleModal">
+          Add new skill!
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a new skill you want to share!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- FORM -->
+            <div class="container" id = "sManagerBody">
+              <div class="row" id="skillCard">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="title-Box" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label class="float-label" for="title">skill title</label>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="contact-Box" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label class="float-label" for="contact">contact (phone or email)</label>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="photo-box" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label class="float-label" for="photo">enter photo URL</label>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="textarea" class="form-control" id="descriptionTextBox" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label class="float-label" for="description">description</label>
+                  </div>
+                </div>
+
+              <div class="col-md-6">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    select a category
+                  </button>
+                  <div class="dropdown-menu scrollable-menu" id="categoryDropdown" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" id="catItem" href="#"></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    select an environment
+                  </button>
+                  <div class="dropdown-menu scrollable-menu" id="environmentDropdown" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" id="envItem" href="#"></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12"><br></div>
+
+
+              <div class="col-md-2 col-xs-4">
+                <button type="button" id="submit" class="btn btn-outline-* btn-lg">submit</button>
+              </div>
+              <!-- END FORM -->
+          </div>
+        </div>
       </div>
     </div>
 <!-- END HEADER -->
 
 
-<!-- FORM -->
-<div class="container" id = "sManagerBody">
-  <div class="row" id="skillCard">
-      <div class="col-md-6">
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="title-Box" required>
-          <span class="form-highlight"></span>
-          <span class="form-bar"></span>
-          <label class="float-label" for="title">skill title</label>
-        </div>
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            select a category
-          </button>
-          <div class="dropdown-menu scrollable-menu" id="categoryDropdown" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="catItem" href="#"></a>
-          </div>
-        </div>
-
-        <br>
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            select an environment
-          </button>
-          <div class="dropdown-menu scrollable-menu" id="environmentDropdown" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="envItem" href="#"></a>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="contact-Box" required>
-          <span class="form-highlight"></span>
-          <span class="form-bar"></span>
-          <label class="float-label" for="contact">contact (phone or email)</label>
-        </div>
-
-      </div>
-
-      <div class="col-md-6">
-
-            <div class="form-group">
-              <input type="text" class="form-control" id="photo-box" required>
-              <span class="form-highlight"></span>
-              <span class="form-bar"></span>
-              <label class="float-label" for="photo">enter photo URL</label>
-            </div>
-
-          <!-- <label for="Description" class="col-2 col-form-label">Description</label>
-          <div class="col-10">
-            <textarea id="descriptionTextBox" required></textarea>
-          </div> -->
-
-          <div class="form-group">
-            <input type="textarea" class="form-control" id="descriptionTextBox" required>
-            <span class="form-highlight"></span>
-            <span class="form-bar"></span>
-            <label class="float-label" for="description">description</label>
-          </div>
-
-    </div>
 
     <div class="col-md-2 col-xs-4">
       <button type="button" id="skillSubmit" class="btn btn-outline-* btn-lg">submit</button>
     </div>
 <!-- END FORM -->
+
 
 
 
