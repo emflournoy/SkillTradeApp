@@ -354,3 +354,7 @@ label {
 #titleSection{
   padding-top: 20px;
 }
+
+#UserCard {
+  display: none;
+}
