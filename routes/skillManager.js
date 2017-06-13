@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res) {
+  console.log("it was triggered");
   let allArr = [];
   knex('categories')
   .then((data)=>{
