@@ -302,6 +302,16 @@ label {
   color: white;
 }
 
+.nav-item #logoutButton {
+  font-weight: lighter;
+  color: white;
+}
+
+.nav-item #logoutButton:hover {
+  font-weight: lighter;
+  background-color: #4e8b82;
+}
+
 /*--Empty skillsmanager placeholder----------------------*/
 
 #placeholder-box,  #soundsLikeFun  {
