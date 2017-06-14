@@ -59,7 +59,7 @@ $('#skillSubmit').on('click', (event)=> {
     dataType: 'json',
   })
   .done((data) => {
-    $('#myModal').modal('hide');
+    $('#newCardModal').modal('hide');
     addNewSkill(data);
   })
   .fail(() => {
