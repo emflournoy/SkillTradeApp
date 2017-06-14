@@ -27,7 +27,6 @@ function createDropdowns(arr, idName, appendTo){
   }
 }
 
-
 $('#categoryDropdown').on('click', function(event){
     $('#categories').html(event.target.text);
     $('#categories').attr('dataId',event.target.getAttribute('dataId'));
@@ -39,15 +38,14 @@ $('#environmentDropdown').on('click', function(event){
 });
 
 
-
+// SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
 $('#skillSubmit').on('click', (event)=> {
-
   let skill_card_obj = {
     title: $('#title-Box').val(),
     description: $('#descriptionTextBox').val(),
     photo: $('#photo-box').val(),
-    categories_id: $('#categories').attr('dataId'),//need to access
-    environment_id: $('#environments').attr('dataId'),//need to access
+    categories_id: $('#categories').attr('dataId'),
+    environment_id: $('#environments').attr('dataId'),
     contact: $('#contact-Box').val()
   };
 
@@ -70,23 +68,41 @@ $('#skillSubmit').on('click', (event)=> {
 function addNewSkill(data){
   let userCard = $("#userCard").clone();
   userCard.removeAttr("id");
-  let individualID = 'userCard' + `${data.id}`;
-  userCard.attr("id", individualID);
+  let cardId = `${data[0].id}`;
+  userCard.attr("id", cardId);
   let $title = userCard.find("h4");
   $title.html(data[0].title);
   let $image = userCard.find("img");
   $image.attr('src', data[0].photo);
   userCard.children(".card").children("#card-category").text($('#categories').html());
-  // userCard.children(".card-block").children("#cardTitle").text(data[0].title);
   let $environment = userCard.find("h5");
   $environment.html($('#environments').html());
   let $description = userCard.find("#cardDescription");
   $description.html(data[0].description);
   let $contact = userCard.find("#card-contact");
   $contact.html(data[0].contact);
-
   $('#userContainer').append(userCard);
+
+  // DELETE SKILL CARD FUNCTION ======================
+  $('.close').on('click',function(event){
+    var deleteCardId = $(this).parents('.deleteClass')[0].id;
+    var $target = $(this).parents('.deleteClass');
+    $target.hide('slow', function(){$target.remove();});
+
+    $.ajax({
+      contentType: 'application/json',
+      type: "DELETE",
+      url: '/skillManager/' + deleteCardId,
+    })
+    .done((data) => {
+      console.log('deleted: ', data);
+    })
+    .fail(() => {
+      console.log('not working');
+    });
+  });
 }
 
 
+//end of docReady
 });
