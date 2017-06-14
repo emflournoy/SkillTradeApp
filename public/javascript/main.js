@@ -129,6 +129,6 @@ function runRouteAfterLogin(userInputs, loginResponse){
       console.log('post not working');
     });
 
-
+window.location.replace("html/skillsManager.html");
 
 }
