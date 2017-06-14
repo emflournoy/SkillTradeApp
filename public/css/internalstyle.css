@@ -391,3 +391,7 @@ label {
   font-family: 'Cabin Sketch', cursive;
   padding: 8px;
 }
+
+#skillCardModal {
+  width: 100%;
+}
