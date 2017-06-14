@@ -50,7 +50,7 @@ $(document).ready(function(){
   // checkLoginState();
 
 
-  const sbUserId= [];
+
 
   var loggedin = false;
 
@@ -118,15 +118,15 @@ function runRouteAfterLogin(userInputs, loginResponse){
           dataType: 'json'
         })
         .done((data) => {
-          sbUserId.push(data)
+          console.log("get data", data);
         })
         .fail(() => {
-          console.log('not working');
+          console.log('/GETnot working');
         });
       }
     })
     .fail(() => {
-      console.log('not working');
+      console.log('post not working');
     });
 
 

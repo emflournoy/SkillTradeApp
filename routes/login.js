@@ -13,10 +13,12 @@ router.post('/login', function(req,res,next){
   knex('users')
   .insert(req.body, '*')
   .then((result)=>{
-    res.cookie('userID', result[0]['id'], {httpsOnly: true});
+    console.log(result[0]);
+    // res.cookie('userID', result[0]['id'], {httpsOnly: true});
     return res.send(result.id);
   })
   .catch((err)=>{
+    console.log(err, "this ERROR");
     return res.status(400).send(err);
   });
 });
@@ -24,9 +26,8 @@ router.post('/login', function(req,res,next){
 router.get('/login/:id', (req, res, next)=>
 {
   knex('users')
-  .where('login', res.cookies.userId)
+  .where('login', req.params.id)
   .then((data)=>{
-    console.log(data);
     res.cookie('userID', data[0]['id'], {httpOnly: true});
     return res.send(data[0]);
   })
