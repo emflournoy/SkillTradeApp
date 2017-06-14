@@ -390,6 +390,10 @@ label {
   display: none;
 }
 
+.card{
+  margin-bottom: 30px;
+}
+
 /*--Skillcards on Trade Manager-----------------*/
 
 #skillCard {
