@@ -1,45 +1,5 @@
 $(document).ready(function(){
 
-// checkLoginState();
-  // FB.getLoginStatus(function(response){
-  //     if(res.status != "connected") {
-  //       //have the button display "please log on"
-  //     } else {
-  //       //have button show "continue as facebook user"
-  //     }
-  //   });
-
-    //   console.log("clicked");
-    //   if(false) {   //this.html == "please log on"
-    //     FB.login(function(inResponse){
-    //       if (inResponse.status == 'connected'){
-    //       toggleVisible();
-    //       generateFriends(inResponse.authResponse.userID);
-    //       generateMe();
-    //     $.get('/skillManager')
-    //     }
-    //     },{scope: 'public_profile'})
-    //   } else {
-    //
-    //    $.get('/skillManager')
-    //   }
-    // });
-
-
-  //
-  //
-  // $('#login').click(function(){
-  //   FB.login(function(inResponse){
-  //     if (inResponse.status == 'connected'){
-  //     toggleVisible();
-  //     generateFriends(inResponse.authResponse.userID);
-  //     generateMe();
-  //   }
-  // },{scope: 'public_profile'});
-  // });
-  //
-
-  //
   // $("#logout").click(function(){
   //   FB.logout(function(response) {
   //     console.log(response);// Person is now logged out
@@ -93,12 +53,9 @@ $(document).ready(function(){
     else if(loggedin){
       runRouteAfterLogin(userInputs, loginResponse);
     }
-
     //  window.location.replace("html/skillsManager.html")
   });
 });
-
-
 
 function runRouteAfterLogin(userInputs, loginResponse){
 
@@ -119,6 +76,9 @@ function runRouteAfterLogin(userInputs, loginResponse){
         })
         .done((data) => {
           console.log("get data", data);
+          window.location.replace("html/skillsManager.html");
+
+
         })
         .fail(() => {
           console.log('/GETnot working');
@@ -128,7 +88,5 @@ function runRouteAfterLogin(userInputs, loginResponse){
     .fail(() => {
       console.log('post not working');
     });
-
-window.location.replace("html/skillsManager.html");
 
 }
