@@ -1,8 +1,59 @@
 $(document).ready(function(){
 
+// checkLoginState();
+  // FB.getLoginStatus(function(response){
+  //     if(res.status != "connected") {
+  //       //have the button display "please log on"
+  //     } else {
+  //       //have button show "continue as facebook user"
+  //     }
+  //   });
+
+    //   console.log("clicked");
+    //   if(false) {   //this.html == "please log on"
+    //     FB.login(function(inResponse){
+    //       if (inResponse.status == 'connected'){
+    //       toggleVisible();
+    //       generateFriends(inResponse.authResponse.userID);
+    //       generateMe();
+    //     $.get('/skillManager')
+    //     }
+    //     },{scope: 'public_profile'})
+    //   } else {
+    //
+    //    $.get('/skillManager')
+    //   }
+    // });
+
+
+  //
+  //
+  // $('#login').click(function(){
+  //   FB.login(function(inResponse){
+  //     if (inResponse.status == 'connected'){
+  //     toggleVisible();
+  //     generateFriends(inResponse.authResponse.userID);
+  //     generateMe();
+  //   }
+  // },{scope: 'public_profile'});
+  // });
+  //
+
+  //
+  // $("#logout").click(function(){
+  //   FB.logout(function(response) {
+  //     console.log(response);// Person is now logged out
+  //   });
+  // })
+  // //
+  // // //
+  // checkLoginState();
+
+
   const sbUserId= [];
 
-  var loggedin;
+  var loggedin = false;
+
 
   var userInputs = {
     first_name: '',
@@ -18,62 +69,66 @@ $(document).ready(function(){
    };
 
    $('#login').click(function(){
-     checkLoginState();
     var loginResponse;
+      checkLoginState();
     function checkLoginState() {
       FB.getLoginStatus(function(response) {
-          if(response.status == 'connected' && response.status != undefined){
-          loggedin = true;
-          loginResponse = response.authResponse.userID;
-          userInputs.login = Number(loginResponse);
-          return userInputs.login;
-          }
-          else{
-            loggedin = false;
-          }
+          if (response.status == "connected" && response.status != undefined){
+            loginResponse = response.authResponse.userID;
+            userInputs.login = loginResponse;
+            loggedin = true;
 
+            return userInputs.login;
+          }
       });
     }
-    if(loggedin){
-
-      $.ajax({
-        contentType: 'application/json',
-        type: "POST",
-        url: '/login',
-        data: JSON.stringify(userInputs),
-        dataType: 'json',
-      })
-      .done((user) => {
-
-      })
-      .fail((err) => {
-
-      });
-      window.location.replace("html/skillsManager.html");
-      return;
-    }else if (!loggedin){
+    if(!loggedin){
       FB.login(function(inResponse){
+        // window.location.replace("html/skillsManager.html");
         checkLoginState();
-          if (inResponse.status == 'connected'){
-            $.ajax({
-              contentType: 'application/json',
-              type: "POST",
-              url: '/login',
-              data: JSON.stringify(userInputs),
-              dataType: 'json',
-            })
-            .done((user) => {
-            })
-            .fail(() => {
-            });
+        runRouteAfterLogin(userInputs, loginResponse)
 
-          }
       },{scope: 'public_profile'})
-      return;
+    }
+    else if(loggedin){
+      runRouteAfterLogin(userInputs, loginResponse);
+    }
 
-  } else {
-
-  }
+    //  window.location.replace("html/skillsManager.html")
   });
-
 });
+
+
+
+function runRouteAfterLogin(userInputs, loginResponse){
+
+
+
+    $.ajax({
+      contentType: 'application/json',
+      type: "POST",
+      url: '/login',
+      data: JSON.stringify(userInputs),
+      dataType: 'json',
+      complete: function(){
+        $.ajax({
+          contentType: 'application/json',
+          type: "GET",
+          url: '/login/' + loginResponse,
+          dataType: 'json'
+        })
+        .done((data) => {
+          sbUserId.push(data)
+        })
+        .fail(() => {
+          console.log('not working');
+        });
+      }
+    })
+    .fail(() => {
+      console.log('not working');
+    });
+
+
+
+}
