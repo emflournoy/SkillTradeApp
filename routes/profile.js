@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 
 router.get('/profile/:id', (req, res, next)=>{
   knex('users')

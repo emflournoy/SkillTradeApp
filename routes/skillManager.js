@@ -6,10 +6,11 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
-router.get('/skillManager', function(req, res) {
+router.get('/skillManager', function(req, res, next) {
   let allArr = [];
   knex('categories')
   .then((data)=>{
@@ -17,30 +18,52 @@ router.get('/skillManager', function(req, res) {
     knex('environment')
       .then((data2)=>{
         allArr.push(data2);
-        res.send(allArr);
+        // res.send(allArr);
+        req.responseObj = {};
+        req.responseObj.allArr = allArr;
+        next();
       })
     })
   });
 
 
 router.get('/skillManager', (req, res, next)=>{
-  knex('skill_cards')
-    .where('user_id', req.cookies.userID)
+  console.log(req.session);
+  getSkillCards(req.session.userID)
     .then(function(result){
+      req.responseObj.skillCards = result;
       console.log(result);
-      return res.send(result);
+      res.send(req.responseObj);
     });
 });
 
+function getSkillCards(userId, cardId){
+    let query = knex('skill_cards')
+    .select('skill_cards.description', 'skill_cards.id', 'skill_cards.title','skill_cards.contact','skill_cards.photo','environment.type AS env_type', 'categories.type AS cat_type')
+    .join('environment', 'environment.id', 'skill_cards.environment_id')
+    .join('categories', 'categories.id', 'skill_cards.categories_id')
+    .where('user_id', userId)
+
+    if (cardId) {
+      query.where('skill_cards.id',cardId)
+    }
+
+    return query;
+}
+
 router.post('/skillManager', (req, res, next)=>{
-  req.body.user_id = req.cookies.userID;
+  console.log(req.session);
+  req.body.user_id = req.session.userID;
   req.body.categories_id = parseInt(req.body.categories_id);
   req.body.environment_id = parseInt(req.body.environment_id);
   knex('skill_cards')
     .insert(req.body)
-    .returning('*')
-    .then(function(result){
-      return res.send(result);
+    .returning('id')
+    .then(function(id){
+      getSkillCards(req.session.userID,id[0])
+      .then(function(result) {
+        return res.send(result[0]);
+      })
     })
     .catch((err)=>{
       console.log(err);

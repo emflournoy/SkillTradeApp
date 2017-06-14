@@ -119,6 +119,8 @@ function runRouteAfterLogin(userInputs, loginResponse){
         })
         .done((data) => {
           console.log("get data", data);
+          window.location.replace("html/skillsManager.html");
+
         })
         .fail(() => {
           console.log('/GETnot working');
@@ -128,7 +130,5 @@ function runRouteAfterLogin(userInputs, loginResponse){
     .fail(() => {
       console.log('post not working');
     });
-
-window.location.replace("html/skillsManager.html");
 
 }

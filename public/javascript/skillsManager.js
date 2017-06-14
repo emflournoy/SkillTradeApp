@@ -8,9 +8,14 @@ $('#modalbtn').on('click', (event)=>{
 
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 $.getJSON('/skillManager')
-    .done((catsEnvArr) => {
-      createDropdowns(catsEnvArr[0], 'catItem', 'categoryDropdown');
-      createDropdowns(catsEnvArr[1], 'envItem', 'environmentDropdown');
+    .done((response) => {
+      let allArr = response['allArr'];
+      let skillCards = response['skillCards'];
+      createDropdowns(allArr[0], 'catItem', 'categoryDropdown');
+      createDropdowns(allArr[1], 'envItem', 'environmentDropdown');
+      for(let i=0; i<skillCards.length; i++){
+        addNewSkill(skillCards[i]);
+      }
     })
     .fail(() => {
       console.log('not loading API');
@@ -58,6 +63,7 @@ $('#skillSubmit').on('click', (event)=> {
   })
   .done((data) => {
     $('#newCardModal').modal('hide');
+    console.log(data);
     addNewSkill(data);
   })
   .fail(() => {
@@ -67,20 +73,21 @@ $('#skillSubmit').on('click', (event)=> {
 
 function addNewSkill(data){
   let userCard = $("#userCard").clone();
+  console.log(data);
   userCard.removeAttr("id");
-  let cardId = `${data[0].id}`;
+  let cardId = `${data.id}`;
   userCard.attr("id", cardId);
   let $title = userCard.find("h4");
-  $title.html(data[0].title);
+  $title.html(data.title);
   let $image = userCard.find("img");
-  $image.attr('src', data[0].photo);
-  userCard.children(".card").children("#card-category").text($('#categories').html());
+  $image.attr('src', data.photo);
+  userCard.children(".card").children("#card-category").text(data.cat_type);
   let $environment = userCard.find("h5");
-  $environment.html($('#environments').html());
+  $environment.html(data.env_type);
   let $description = userCard.find("#cardDescription");
-  $description.html(data[0].description);
+  $description.html(data.description);
   let $contact = userCard.find("#card-contact");
-  $contact.html(data[0].contact);
+  $contact.html(data.contact);
   $('#userContainer').append(userCard);
 
   // DELETE SKILL CARD FUNCTION ======================

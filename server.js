@@ -8,12 +8,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const cookieParser= require('cookie-parser');
+const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 switch (app.get('env')) {
   case 'development':
@@ -35,7 +32,11 @@ app.use('/',function(req,res,next){
 });
 
 app.use(bodyParser.json());
-app.use(cookieParser());
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.COOKIE_KEY]
+}));
 
 
 const skillboard = require('./routes/skillboard');
@@ -44,6 +45,7 @@ const profile = require('./routes/profile');
 const login = require('./routes/login');
 
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(login);
 app.use(skillboard);
