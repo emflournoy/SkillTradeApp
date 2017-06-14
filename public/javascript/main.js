@@ -93,12 +93,9 @@ $(document).ready(function(){
     else if(loggedin){
       runRouteAfterLogin(userInputs, loginResponse);
     }
-
     //  window.location.replace("html/skillsManager.html")
   });
 });
-
-
 
 function runRouteAfterLogin(userInputs, loginResponse){
 
@@ -120,6 +117,7 @@ function runRouteAfterLogin(userInputs, loginResponse){
         .done((data) => {
           console.log("get data", data);
           window.location.replace("html/skillsManager.html");
+
 
         })
         .fail(() => {

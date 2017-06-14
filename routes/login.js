@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
 
+
 router.post('/login', function(req,res,next){
   knex('users')
   .insert(req.body, '*')
