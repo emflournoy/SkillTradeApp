@@ -12,7 +12,7 @@ router.post('/login', function(req,res,next){
   console.log(req.body);
   console.log(req.cookies);
   knex('users').where('login', req.body.login).then(function(result){
-    
+
     if(result.length === 0){
       post(req.body);
     }
@@ -29,7 +29,7 @@ router.post('/login', function(req,res,next){
     knex('users')
     .insert(info, '*')
     .then((result)=>{
-      res.cookie('userID', req.cookies.userID, {httpsOnly: true});
+      res.cookie('userID', req.cookies.userID, {httpOnly: true});
       console.log(result, "it was posted goodly");
       return res.send(result.id);
     })

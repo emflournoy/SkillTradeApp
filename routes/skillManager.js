@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res) {
-
   let allArr = [];
   knex('categories')
   .then((data)=>{
@@ -28,21 +27,22 @@ router.get('/skillManager', (req, res, next)=>{
   knex('skill_cards')
     .join('users', 'user_id', 'users.id')
     .then(function(result){
-      console.log(result);
       return res.send(result);
     });
 });
 
 router.post('/skillManager', (req, res, next)=>{
-  req.body.user_id = Number(req.cookies.userID);
-  console.log(req.body);
+  req.body.user_id = 2;
+  req.body.categories_id = parseInt(req.body.categories_id);
+  req.body.environment_id = parseInt(req.body.environment_id);
   knex('skill_cards')
-    .insert(req.body, '*')
+    .insert(req.body)
+    .returning('*')
     .then(function(result){
-      console.log(result);
       return res.send(result);
     })
     .catch((err)=>{
+      console.log(err);
       return res.status(400).send(err);
     });
 });
