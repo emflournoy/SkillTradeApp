@@ -10,6 +10,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
+const FB = require('fb');
 const port = process.env.PORT || 3000;
 
 switch (app.get('env')) {
@@ -38,6 +39,11 @@ app.use(cookieSession({
   keys: [process.env.COOKIE_KEY]
 }));
 
+app.use((req, res, next)=>{
+  console.log("look at me: ",req.session);
+  next();
+})
+
 
 const skillboard = require('./routes/skillboard');
 const skillManager = require('./routes/skillManager');
@@ -52,13 +58,14 @@ app.use(skillboard);
 app.use(skillManager);
 app.use(profile);
 
-
+app.delete('/', (req, res)=>{
+  req.session = null;
+  return res.send('you are logged out')
+})
 
 app.use((_req, res) => {
   res.sendStatus(404);
 });
-
-
 
 app.listen(port, function(){
   console.log("listening on port", port);

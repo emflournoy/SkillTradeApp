@@ -1,4 +1,31 @@
 $(document).ready(function() {
+checkLoginState();
+
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+      if (response.status != "connected"){
+        window.location.replace("../index.html")
+      };
+    })
+  }
+
+//LOGOUT FUNCTIONALITY===============================
+$('#logoutButton').on('click', function(){
+  $.ajax({
+    contentType: 'application/json',
+    type: "DELETE",
+    url: '/',
+  })
+  .done((req, res, next) => {
+    req.session = null;
+      FB.logout();
+    window.location.replace("../index.html")
+  })
+  .fail(() => {
+    console.log('not logging out');
+  });
+});
 
 
 $('#modalbtn').on('click', (event)=>{
@@ -63,7 +90,6 @@ $('#skillSubmit').on('click', (event)=> {
   })
   .done((data) => {
     $('#newCardModal').modal('hide');
-    console.log(data);
     addNewSkill(data);
   })
   .fail(() => {
@@ -73,7 +99,6 @@ $('#skillSubmit').on('click', (event)=> {
 
 function addNewSkill(data){
   let userCard = $("#userCard").clone();
-  console.log(data);
   userCard.removeAttr("id");
   let cardId = `${data.id}`;
   userCard.attr("id", cardId);
