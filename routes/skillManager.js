@@ -25,14 +25,15 @@ router.get('/skillManager', function(req, res) {
 
 router.get('/skillManager', (req, res, next)=>{
   knex('skill_cards')
-    .join('users', 'user_id', 'users.id')
+    .where('user_id', req.cookies.userID)
     .then(function(result){
+      console.log(result);
       return res.send(result);
     });
 });
 
 router.post('/skillManager', (req, res, next)=>{
-  req.body.user_id = 2;
+  req.body.user_id = req.cookies.userID;
   req.body.categories_id = parseInt(req.body.categories_id);
   req.body.environment_id = parseInt(req.body.environment_id);
   knex('skill_cards')
