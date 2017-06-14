@@ -93,12 +93,9 @@ $(document).ready(function(){
     else if(loggedin){
       runRouteAfterLogin(userInputs, loginResponse);
     }
-
     //  window.location.replace("html/skillsManager.html")
   });
 });
-
-
 
 function runRouteAfterLogin(userInputs, loginResponse){
 
@@ -118,7 +115,8 @@ function runRouteAfterLogin(userInputs, loginResponse){
           dataType: 'json'
         })
         .done((data) => {
-          console.log("get data", data);
+          // console.log("get data", data);
+
         })
         .fail(() => {
           console.log('/GETnot working');
@@ -128,7 +126,6 @@ function runRouteAfterLogin(userInputs, loginResponse){
     .fail(() => {
       console.log('post not working');
     });
-
 window.location.replace("html/skillsManager.html");
 
 }
