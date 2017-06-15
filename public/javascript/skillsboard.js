@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
-$.getJSON('http://localhost:3000/skillboard')
+$.getJSON('/skillboard')
     .done((allCards) => {
       createTradeCard(allCards);
     })
