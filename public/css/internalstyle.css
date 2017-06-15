@@ -453,6 +453,10 @@ h3{
   font-weight: lighter;
   background-color: #4e8b82;
 }
+.activeFilter {
+  font-weight: lighter;
+  background-color: #faae2c;
+}
 
 #envButton , #catButton{
   display: none;

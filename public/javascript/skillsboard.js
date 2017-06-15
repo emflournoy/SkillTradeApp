@@ -88,6 +88,9 @@ function createFilterButtons(arr, idName, appendTo){
     $(`#${appendTo}`).append($clonedItem);
     //make filter option
   $clonedItem.on('click',function(event){
+    // $('.button').hasClass('activeFilter').removeClass('activeFilter')
+    // var $target = $(event.target)
+    // $target.addClass('activeFilter');
     $('#tradeCardsContainer').children().remove();
     $('#tradeCardsContainer').html(blankCard);
     var filtered = allCardsArr.filter((obj)=>{
