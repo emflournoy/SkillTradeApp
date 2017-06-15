@@ -1,6 +1,4 @@
 $(document).ready(function() {
-checkLoginState();
-
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
@@ -9,7 +7,6 @@ function checkLoginState() {
       };
     })
   };
-
 
   //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
   $.ajax({
@@ -26,8 +23,6 @@ function checkLoginState() {
     console.log('/GETnot working');
   });
 //END OF COOKIE CHECKING AND REDIRECTING ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 
 //LOGOUT FUNCTIONALITY===============================
 $('#logoutButton').on('click', function(){
@@ -47,11 +42,9 @@ $('#logoutButton').on('click', function(){
   });
 });
 
-
 $('#modalbtn').on('click', (event)=>{
   $('.modal').modal('show');
 });
-
 
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 $.getJSON('/skillManager')
@@ -88,7 +81,6 @@ $('#environmentDropdown').on('click', function(event){
     $('#environments').html(event.target.text);
     $('#environments').attr('dataId',event.target.getAttribute('dataId'));
 });
-
 
 // SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
 $('#skillSubmit').on('click', (event)=> {
@@ -154,7 +146,4 @@ function addNewSkill(data){
     });
   });
 }
-
-
-//end of docReady
-});
+});//end of docReady
