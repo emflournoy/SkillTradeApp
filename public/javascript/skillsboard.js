@@ -31,9 +31,8 @@ $.getJSON('http://localhost:3000/skillboard')
     });
 
 //FUNCTION TO CREATE SKILL CARDS========================
-function createTradeCard(arr){
+function createTradeCard(e){
 
-  arr.map((e)=>{
     let $tradeCard = $("#skillCardSB").clone();
     $tradeCard.removeAttr("id");
     let indId= 'Card' + e.id;
@@ -52,7 +51,7 @@ function createTradeCard(arr){
     let $contactInfo = $tradeCard.find("#card-contact");
     $contactInfo.text(e.contact);
     $('#tradeCardsContainer').append($tradeCard);
-  }); //END OF MAP
+  ; //END OF MAP
 
 }
 
