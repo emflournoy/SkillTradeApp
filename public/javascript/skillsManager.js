@@ -89,6 +89,8 @@ $('#skillSubmit').on('click', (event)=> {
     dataType: 'json',
   })
   .done((data) => {
+    $('#sManagerBody').trigger("reset");
+
     $('#newCardModal').modal('hide');
     addNewSkill(data);
   })
