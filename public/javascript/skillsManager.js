@@ -89,10 +89,9 @@ $('#skillSubmit').on('click', (event)=> {
     dataType: 'json',
   })
   .done((data) => {
-    $('#sManagerBody').trigger("reset");
-
     $('#newCardModal').modal('hide');
     addNewSkill(data);
+    emptyForm();
   })
   .fail(() => {
     console.log('not working');
@@ -135,6 +134,16 @@ function addNewSkill(data){
       console.log('not working');
     });
   });
+}
+
+// EMPTY FORM FUNCTION========================
+function emptyForm (){
+   $('#title-Box').val('');
+   $('#descriptionTextBox').val('');
+   $('#photo-box').val('');
+   $('#categories').val('select a category');
+   $('#environments').val('select an environment');
+   $('#contact-Box').val('');
 }
 
 
