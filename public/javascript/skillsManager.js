@@ -1,12 +1,5 @@
 $(document).ready(function() {
 
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-      if (response.status != "connected"){
-        window.location.replace("../index.html")
-      };
-    })
-  };
 
   //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
   $.ajax({

@@ -1,5 +1,28 @@
 $(document).ready(function() {
 
+
+    //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
+    $.ajax({
+      type: "GET",
+      url: '/skillManager'
+    })
+    .done((data) => {
+      console.log("info about if they have a cookie when going to skillmanager", data);
+      if(data === "no cookies"){
+        window.location.replace("../index.html");
+      }
+    })
+    .fail(() => {
+      console.log('/GETnot working');
+    });
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
   //LOGOUT FUNCTIONALITY ===============================
   $('#logoutButton').on('click', function(){
     $.ajax({

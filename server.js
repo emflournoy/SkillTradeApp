@@ -62,6 +62,24 @@ app.use(skillboard);
 app.use(skillManager);
 app.use(profile);
 
+// this route reads if they have cookies when the splash page loads. this info is used to changed to login button text from login to continue ----------------------------------
+app.get('/continue', function(req,res,next){
+  console.log("inside CONTINUE route");
+  var cookiearray = (Object.keys(req.session));
+  if (cookiearray.length != 0){
+    console.log("there is a cookie when going to home page");
+    return res.send("yes cookie")
+  }
+  else if (cookiearray.length == 0){
+    return res.send("no cookie")
+  }
+  else{
+    next();
+  }
+})
+//----------------------------------------------------------------------------------------------------------------------------
+
+
 app.delete('/', (req, res)=>{
   req.session = null;
   console.log(req.session, "please be deleted");
