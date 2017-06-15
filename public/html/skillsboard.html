@@ -70,6 +70,7 @@
     <div class="container-fluid">
       <div class="container" id='catFilters'>
         <h3 class="display-6">Filter by Category</h3>
+        <button type="button" class="btn btn-outline-secondary catEnv" id='clearCat'>Clear Filter</button>
         <button type="button" class="btn btn-outline-secondary catEnv" id='catButton'>Category</button>
       </div>
     </div>
@@ -80,6 +81,7 @@
       <div class="container" id='envFilters'>
         <br>
         <h3 class="display-6">Filter by Environment</h3>
+        <button type="button" class="btn btn-outline-secondary catEnv" id='clearEnv'>Clear Filter</button>
         <button type="button" class="btn btn-outline-secondary catEnv" id='envButton'>Environments</button>
         <br>
       </div>
@@ -90,7 +92,7 @@
 <!-- CARD DIVIDER -->
 <div class="jumbotron jumbotron-fluid" id="soundsLikeFun">
   <div class="container">
-    <h1 class="display-6">What sounds like fun?</h1>
+    <h1 class="display-6" id="filterStatus">What sounds like fun?</h1>
   </div>
 </div>
 <!-- END CARD DIVIDER -->
