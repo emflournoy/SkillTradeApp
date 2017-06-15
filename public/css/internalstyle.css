@@ -379,7 +379,7 @@ label {
 /*--Skillcards on Trade Manager-----------------*/
 
 #skillCard {
-  height: 250px;
+  /*height: 250px;*/
   margin-bottom: 30px;
   display:none;
 }
@@ -393,6 +393,15 @@ label {
   padding: 8px;
 }
 
+.scroll-box {
+     overflow-x: scroll;
+     height: 180px;
+     padding: 1rem
+ }
+
 #skillCardModal {
   width: 100%;
+}
+.skillCard{
+    margin-bottom: 30px;
 }
