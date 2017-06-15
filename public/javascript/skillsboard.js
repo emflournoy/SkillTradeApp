@@ -1,6 +1,24 @@
 $(document).ready(function() {
 
+
   var blankCard = '<div class="col-sm-4" id="blankTradeCard"><div class="card skillCard" id="skillCardSB"><div class="card-header" id="card-category">Category</div><div class="card-block scroll-box"><div class="row" id="cardTopSection"><div class="col-md-6" id="titleSection"><h4 class="card-title" id="cardTitle">Activity Title</h4><h5 class="card-environment" id="cardEnvironment">Environment</h5></div><div class="col-md-6"><img class="img-fluid" src ="http://lorempixel.com/200/200" alt="picture" id= "photo"></div></div><p class="card-text" id="cardDescription">With supporting text below as a natural lead-in to additional content.</p><p class = "card-contact">Contact: <span id="card-contact">Contact Info</span></p></div></div></div>'
+
+
+    //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
+    $.ajax({
+      type: "GET",
+      url: '/skillManager'
+    })
+    .done((data) => {
+      console.log("info about if they have a cookie when going to skillmanager", data);
+      if(data === "no cookies"){
+        window.location.replace("../index.html");
+      }
+    })
+    .fail(() => {
+      console.log('/GETnot working');
+    });
+//-------------------------------------------------------------------------------------------------------------
 
 
   //LOGOUT FUNCTIONALITY ===============================
@@ -25,7 +43,7 @@ $(document).ready(function() {
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
-$.getJSON('http://localhost:3000/skillboard')
+$.getJSON('/skillboard')
     .done((allCards) => {
       createTradeCard(allCards);
     })

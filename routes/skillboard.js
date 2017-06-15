@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
 
+
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillboard', function(req, res, next) {
 
@@ -26,6 +27,19 @@ router.get('/skillboard', function(req, res, next) {
       })
     })
   });
+
+
+router.get('/skillboard', function(req, res, next) {
+  var cookiearray = (Object.keys(req.session));
+  if (cookiearray.length == 0){
+    console.log("no cookies server side for skillmanager");
+    return res.send("no cookies")
+  }
+  else {
+    next();
+  }
+});
+
 
 
 router.get('/skillboard',function(req,res,next){

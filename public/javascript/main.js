@@ -1,6 +1,25 @@
 $(document).ready(function(){
 
 
+// THIS CHANGES THE LOGIN BUTTON from logn to continue if they aready have cookies (which they get from being logged in)---------------------------------------
+  $.ajax({
+    type: "GET",
+    url: '/continue'
+  })
+  .done((data) => {
+    console.log("info about if they have a cookie when getting to the login page", data);
+    if(data === "yes cookie"){
+      $('#login').html('Continue');
+    }
+    else if (data === "no cookie"){
+      $('#login').html('Login')
+    }
+  })
+  .fail(() => {
+    console.log('/GETnot working');
+  });
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   var loggedin = false;
 
 
@@ -25,6 +44,7 @@ $(document).ready(function(){
           if (response.status == "connected" && response.status != undefined){
             loginResponse = response.authResponse.userID;
             userInputs.login = loginResponse;
+            userInputs.email = loginResponse;           // this line was added to overcome the database table that wants a unique email (too hard to correct the table format)
             loggedin = true;
 
             return userInputs.login;
