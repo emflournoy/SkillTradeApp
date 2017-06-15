@@ -10,17 +10,21 @@ const cookieSession = require('cookie-session');
 const FB = require('fb');
 
 
-// router.use((req, res, next)=>{
-//   if (req.session.length == 0){
-//     res.redirect('/public/index.html')
-//   }
-//     next();
-// })
-
+//this sendsinfo to client side about if they have a cookie (when they dont server side will send them to login page)------------------------------
+router.get('/skillManager', function(req, res, next) {
+  var cookiearray = (Object.keys(req.session));
+  if (cookiearray.length == 0){
+    console.log("no cookies server side for skillmanager");
+    return res.send("no cookies")
+  }
+  else {
+    next();
+  }
+});
+//-------------------------------------------------------------------
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res, next) {
-  //checkLoginState();
 
   let allArr = [];
   knex('categories')
@@ -81,18 +85,6 @@ router.post('/skillManager', (req, res, next)=>{
     });
 });
 
-// router.patch('/skillManager/:skill_card_id', (req,res,next) => {
-//   knex('skill_cards')
-//     .where('id', req.params.skill_card_id)
-//     .update(req.body, '*')
-//     .then(function(result){
-//       return res.send(result);
-//     })
-//     .catch((err)=>{
-//       return res.status(400).send(err);
-//     });
-// })
-
 router.delete('/skillManager/:skill_card_id', (req,res,next) => {
   knex('skill_cards')
     .where('id', req.params.skill_card_id)
@@ -105,6 +97,5 @@ router.delete('/skillManager/:skill_card_id', (req,res,next) => {
       return res.status(400).send(err);
     });
 })
-
 
 module.exports = router;

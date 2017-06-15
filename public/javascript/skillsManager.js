@@ -1,51 +1,30 @@
 $(document).ready(function() {
-// checkLoginState();
 
-// function checkLoginState() {
-//   console.log("checking inside function");
-//   FB.getLoginStatus(function(response) {
-//     console.log("inside facebook callback");
-//     console.log("response!!!!!!", response);
-//       // if (response.status != "connected"){
-//       //
-//       //   $.ajax({
-//       //     contentType: 'application/json',
-//       //     type: "DELETE",
-//       //     url: '/',
-//       //   })
-//       //   .done((req, res, next) => {
-//       //     console.log("cookie deleted when they not logged into facebook");
-//       //   })
-//       //   .fail(() => {
-//       //     console.log('not logging out');
-//       //   });
-//       //
-//       //
-//       //   window.location.replace("../index.html")
-//       // };
-//     })
-//     console.log("after the thing that isnt working");
-//   }
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+      if (response.status != "connected"){
+        window.location.replace("../index.html")
+      };
+    })
+  };
+
+  //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
+  $.ajax({
+    type: "GET",
+    url: '/skillManager'
+  })
+  .done((data) => {
+    console.log("info about if they have a cookie when going to skillmanager", data);
+    if(data === "no cookies"){
+      window.location.replace("../index.html");
+    }
+  })
+  .fail(() => {
+    console.log('/GETnot working');
+  });
+//END OF COOKIE CHECKING AND REDIRECTING ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-
-
-
-
-// $.ajax({
-//   contentType: 'application/json',
-//   type: "GET",
-//   url: '/skillManager',
-// })
-// .done((req, res, next) => {
-//
-// })
-// .fail(() => {
-//   console.log('not logging out');
-// });
-
-
-//LOGOUT FUNCTIONALITY===============================
 $('#logoutButton').on('click', function(){
   $.ajax({
     contentType: 'application/json',
@@ -53,24 +32,21 @@ $('#logoutButton').on('click', function(){
     url: '/',
   })
   .done((req, res, next) => {
-    req.session = null;
-    console.log("req.session", req.session);
-      FB.logout(function(stuff){
-        console.log("STUFF",stuff);
-         window.location.replace("../index.html")
-      });
 
+    console.log(res, "RESPONSE????????");
+    console.log("server side cookie checking", req.session);
+
+      FB.logout();
+    window.location.replace("../index.html");
   })
   .fail(() => {
     console.log('not logging out');
   });
 });
 
-
 $('#modalbtn').on('click', (event)=>{
   $('.modal').modal('show');
 });
-
 
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 $.getJSON('/skillManager')
@@ -107,7 +83,6 @@ $('#environmentDropdown').on('click', function(event){
     $('#environments').html(event.target.text);
     $('#environments').attr('dataId',event.target.getAttribute('dataId'));
 });
-
 
 // SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
 $('#skillSubmit').on('click', (event)=> {
