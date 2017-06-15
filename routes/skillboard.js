@@ -9,6 +9,19 @@ const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
 
+
+router.get('/skillboard', function(req, res, next) {
+  var cookiearray = (Object.keys(req.session));
+  if (cookiearray.length == 0){
+    console.log("no cookies server side for skillmanager");
+    return res.send("no cookies")
+  }
+  else {
+    next();
+  }
+});
+
+
 router.get('/skillboard',function(req,res,next){
   knex('skill_cards')
     .select('skill_cards.contact','skill_cards.title','skill_cards.description','skill_cards.photo','categories.type AS cat','environment.type AS env', 'skill_cards.id')
