@@ -26,7 +26,7 @@
 
 
 <!-- NAV BAR -->
-  <nav class="navbar navbar-toggleable-md sticky-top">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded sticky">
     <button class="navbar-toggler navbar-toggler-right" type="button" id="hamburger" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -44,9 +44,9 @@
           <a class="nav-link" href="skillsManager.html">Trade Manager</a>
         </li>
 
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="profile.html">Profile</a>
-        </li> -->
+        <li class="nav-item navbar-toggler-right">
+          <button class="btn btn-outline-secondary btn-sm" id="logoutButton" href="../index.html">Logout</button>
+        </li>
 
       </ul>
     </div>
@@ -92,17 +92,17 @@
             <div class="card-header" id="card-category">
               Category
             </div>
-            <div class="card-block">
+            <div class="card-block scroll-box">
               <div class="row" id="cardTopSection">
                 <div class="col-md-6" id="titleSection">
                   <h4 class="card-title" id="cardTitle">Activity Title</h4>
                   <h5 class="card-environment" id="cardEnvironment">Environment</h5>
                 </div>
                 <div class="col-md-6">
-                  <img src ="http://lorempixel.com/200/200" alt="picture" id= "photo">
+                  <img class="img-fluid" src ="http://lorempixel.com/200/200" alt="picture" id= "photo">
                 </div>
               </div>
-              <p class="card-text scroll-box" id="cardDescription">With supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text" id="cardDescription">With supporting text below as a natural lead-in to additional content.</p>
               <p class = "card-contact">Contact: <span id="card-contact">Contact Info</span></p>
 
             </div>

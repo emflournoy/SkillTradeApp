@@ -8,6 +8,10 @@
 
 
 /* -- Body style ------------------------------------ */
+body {
+    background-image: url("../photos/topography.png");
+    background-repeat: repeat;
+}
 
 /* -- Input styles ---------------------------------- */
 .form-group {
@@ -229,8 +233,9 @@ label {
 
 /* -- headers --------------------------------- */
 .jumbotron{
-  background-color: #C7BAA7;
+  background-color: rgba(204, 204, 204, 0.42);
   padding: 1%;
+  color: #315853;
 }
 
 .jumbotron h1{
@@ -255,7 +260,7 @@ label {
 
 #modalbtn:hover {
   color: white;
-  background-color: #6EC5B8;
+  background-color: #DC5C05;
   border-color: white;
 }
 
@@ -315,7 +320,7 @@ label {
 /*--Empty skillsmanager placeholder----------------------*/
 
 #placeholder-box,  #soundsLikeFun  {
-  background-color: white;
+  background-color: rgba(180, 180, 180, 0);
   color:#DC5C05;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -335,6 +340,10 @@ label {
 }
 
 /*-- Manager card container ----------------------*/
+.borderRow {
+  background-color: #DC5C05;
+  margin: 0px;
+}
 
 .card-block{
   color:#42a596;
@@ -352,6 +361,7 @@ label {
 
 .card-block img{
   border-radius: 10px;
+  height: 100px;
 }
 
 #card-category{
@@ -410,7 +420,7 @@ label {
 
 .scroll-box {
      overflow-x: scroll;
-     height: 180px;
+     height: 350px;
      padding: 1rem
  }
 
