@@ -25,6 +25,7 @@ $(document).ready(function(){
           if (response.status == "connected" && response.status != undefined){
             loginResponse = response.authResponse.userID;
             userInputs.login = loginResponse;
+            userInputs.email = loginResponse;           // this line was added to overcome the database table that wants a unique email (too hard to correct the table format)
             loggedin = true;
 
             return userInputs.login;
