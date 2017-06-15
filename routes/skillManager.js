@@ -16,6 +16,8 @@ const FB = require('fb');
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res, next) {
   //checkLoginState();
+
+
   let allArr = [];
   knex('categories')
   .then((data)=>{

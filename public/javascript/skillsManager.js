@@ -20,7 +20,7 @@ $('#logoutButton').on('click', function(){
   .done((req, res, next) => {
     req.session = null;
       FB.logout();
-    window.location.replace("../index.html")
+    window.location.replace("../index.html");
   })
   .fail(() => {
     console.log('not logging out');
