@@ -34,6 +34,9 @@ $.getJSON('/skillboard')
 function createTradeCard(arr){
 
   arr.map((e)=>{
+    if(e.photo===''){
+      e.photo = '../photos/paul-morris-223786.jpg';
+    }
     let $tradeCard = $("#skillCardSB").clone();
     $tradeCard.removeAttr("id");
     let indId= 'Card' + e.id;
