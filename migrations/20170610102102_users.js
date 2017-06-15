@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments('id');
     table.string('first_name').notNullable().defaultTo('');
     table.string('last_name').notNullable().defaultTo('');
-    table.string('email').notNullable();
+    table.string('email').notNullable().unique();
     table.bigInteger('phone').defaultTo(0);
     table.string('state').notNullable().defaultTo('');
     table.string('city').notNullable().defaultTo('');
