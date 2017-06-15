@@ -86,16 +86,23 @@
 <!-- SKILL CARDS -->
 <div class="container">
   <div class="row"  id="tradeCardsContainer">
-    <div class="col-sm-4" id="blankTradeCard">
+    <div class="col-sm-6" id="blankTradeCard">
       <div class="card" id="skillCard">
         <div class="card-header category">
           Category
         </div>
         <div class="card-block">
-          <h4 class="card-title" id="cardTitle">Activity Title</h4>
-          <p class="cardId"></p>
-          <p class="card-text" id="cardText">With supporting text below as a natural lead-in to additional content.</p>
-          <button type="button" class="btn btn-primary skillCardBtn" id="skillCardBtn" data-toggle="modal" data-target="#exampleModal">See more
+          <div class="row">
+            <div class="col-md-8">
+              <h4 class="card-title" id="cardTitle">Activity Title</h4>
+              <p class="cardId"></p>
+              <p class="card-text" id="cardText">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="col-md-4">
+              <img class="cardImg">
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary skillCardBtn" id="skillCardBtn" data-toggle="modal" data-target="#exampleModal">Contact
           </button>
           <!-- <a href="#" class="btn btn-primary" id="skillCardBtn">See more</a> -->
         </div>
