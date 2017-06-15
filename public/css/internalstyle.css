@@ -453,3 +453,7 @@ h3{
   font-weight: lighter;
   background-color: #4e8b82;
 }
+
+#envButton , #catButton{
+  display: none;
+}

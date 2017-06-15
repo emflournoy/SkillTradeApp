@@ -72,7 +72,7 @@ $.getJSON('/skillboard')
       console.log('not loading API');
     });
 
-//POPULATE FORM DROPDOWNS==========================
+//MAKE FILTER BUTTONS==========================
 function createFilterButtons(arr, idName, appendTo){
   for(let i=0; i<arr.length; i++){
     let $clonedItem = $(`#${idName}`).clone();
@@ -80,6 +80,30 @@ function createFilterButtons(arr, idName, appendTo){
     $clonedItem.attr("buttonId", arr[i].id);
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
+    //make filter option
+  $clonedItem.on('click',function(event){
+
+
+    // console.log('cheeeeeese', $clonedItem.text(), $clonedItem.attr('buttonId'))
+    //   var testArr=[];
+    //   testArr.push(
+    //     $('#tradeCardsContainer').find($('#card-category').text()===$clonedItem.text()).val()
+    //   )
+    //   console.log(testArr);
+
+
+    // $.ajax({
+    //   contentType: 'application/json',
+    //   type: "DELETE",
+    //   url: '/skillManager/' + deleteCardId,
+    // })
+    // .done((data) => {
+    //   console.log('deleted: ', data);
+    // })
+    // .fail(() => {
+    //   console.log('not deleting card');
+    // });
+  });
   }
 }
 
