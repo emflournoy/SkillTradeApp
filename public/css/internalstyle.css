@@ -419,4 +419,6 @@ label {
 }
 .skillCard{
     margin-bottom: 30px;
+    width:350px;
+    margin-right: 30px;
 }
