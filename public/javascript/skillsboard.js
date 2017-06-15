@@ -57,6 +57,33 @@ function createTradeCard(arr){
 }
 
 
+//API CALL FUNCTION TO LOAD ALL CATEGORIES==========
+$.getJSON('/skillboard')
+    .done((response) => {
+      let allArr = response['allArr'];
+      let skillCards = response['skillCards'];
+      createFilterButtons(allArr[0], 'catButton', 'catFilters');
+      createFilterButtons(allArr[1], 'envButton', 'envFilters');
+      for(let i=0; i<skillCards.length; i++){
+        createTradeCard(skillCards[i]);
+      }
+    })
+    .fail(() => {
+      console.log('not loading API');
+    });
+
+//POPULATE FORM DROPDOWNS==========================
+function createFilterButtons(arr, idName, appendTo){
+  for(let i=0; i<arr.length; i++){
+    let $clonedItem = $(`#${idName}`).clone();
+    $clonedItem.removeAttr("id");
+    $clonedItem.attr("buttonId", arr[i].id);
+    $clonedItem.text(`${arr[i].type}`);
+    $(`#${appendTo}`).append($clonedItem);
+  }
+}
+
+
 
 //END DOC READY
 });

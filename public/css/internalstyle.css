@@ -432,3 +432,24 @@ label {
     width:350px;
     margin-right: 30px;
 }
+
+/*--Filter buttons-----------------*/
+
+h3{
+  color: #315853;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.catEnv {
+  font-weight: lighter;
+  color: #315853;
+  background-color: #c4e4e0;
+  border-color: #5ab1a6;
+  margin: 3px;
+}
+
+.catEnv:hover {
+  font-weight: lighter;
+  background-color: #4e8b82;
+}
