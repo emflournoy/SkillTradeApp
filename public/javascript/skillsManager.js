@@ -8,7 +8,7 @@ function checkLoginState() {
         window.location.replace("../index.html")
       };
     })
-  }
+  };
 
 //LOGOUT FUNCTIONALITY===============================
 $('#logoutButton').on('click', function(){
