@@ -10,12 +10,19 @@ const cookieSession = require('cookie-session');
 const FB = require('fb');
 
 
-
+// router.use((req, res, next)=>{
+//   console.log("look at me: ",req.session.length);
+//   if (req.session.length == 0){
+//     res.redirect('/public/index.html')
+//   }
+//     next();
+// })
 
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res, next) {
   //checkLoginState();
+
   let allArr = [];
   knex('categories')
   .then((data)=>{
