@@ -10,6 +10,25 @@ function checkLoginState() {
     })
   };
 
+
+  //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
+  $.ajax({
+    type: "GET",
+    url: '/skillManager'
+  })
+  .done((data) => {
+    console.log("info about if they have a cookie when going to skillmanager", data);
+    if(data === "no cookies"){
+      window.location.replace("../index.html");
+    }
+  })
+  .fail(() => {
+    console.log('/GETnot working');
+  });
+//END OF COOKIE CHECKING AND REDIRECTING ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 //LOGOUT FUNCTIONALITY===============================
 $('#logoutButton').on('click', function(){
   $.ajax({
@@ -18,7 +37,8 @@ $('#logoutButton').on('click', function(){
     url: '/',
   })
   .done((req, res, next) => {
-    req.session = null;
+    console.log(res, "RESPONSE????????");
+    console.log("server side cookie checking", req.session);
       FB.logout();
     window.location.replace("../index.html");
   })

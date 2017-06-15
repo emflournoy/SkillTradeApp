@@ -1,16 +1,5 @@
 $(document).ready(function(){
 
-  // $("#logout").click(function(){
-  //   FB.logout(function(response) {
-  //     console.log(response);// Person is now logged out
-  //   });
-  // })
-  // //
-  // // //
-  // checkLoginState();
-
-
-
 
   var loggedin = false;
 
