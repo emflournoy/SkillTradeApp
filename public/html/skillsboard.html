@@ -85,22 +85,32 @@
 
 
 <!-- SKILL CARDS -->
-<div class="container">
-  <div class="row"  id="tradeCardsContainer">
-    <div class="col-sm-4" id="blankTradeCard">
-      <div class="card" id="skillCard">
-        <div class="card-header">
-          Category
-        </div>
-        <div class="card-block">
-          <h4 class="card-title" id="cardTitle">Activity Title</h4>
-          <p class="card-text" id="cardText">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary" id="skillCardBtn">See more</a>
+    <div class="container" id="skillCards">
+      <div class="row"  id="tradeCardsContainer">
+        <div class="col-sm-4" id="blankTradeCard">
+          <div class="card" id="skillCardSB">
+            <div class="card-header" id="card-category">
+              Category
+            </div>
+            <div class="card-block">
+              <div class="row" id="cardTopSection">
+                <div class="col-md-6" id="titleSection">
+                  <h4 class="card-title" id="cardTitle">Activity Title</h4>
+                  <h5 class="card-environment" id="cardEnvironment">Environment</h5>
+                </div>
+                <div class="col-md-6">
+                  <img src ="http://lorempixel.com/200/200" alt="picture" id= "photo">
+                </div>
+              </div>
+              <p class="card-text scroll-box" id="cardDescription">With supporting text below as a natural lead-in to additional content.</p>
+              <p class = "card-contact">Contact: <span id="card-contact">Contact Info</span></p>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+<!-- END BLANK SKILL CARD -->
 
 
 <!-- EXCESSIVE INFO CARD -->

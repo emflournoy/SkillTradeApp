@@ -1,14 +1,14 @@
 $(document).ready(function() {
-checkLoginState();
-
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-      if (response.status != "connected"){
-        window.location.replace("../index.html")
-      };
-    })
-  }
+// checkLoginState();
+//
+//
+// function checkLoginState() {
+//   FB.getLoginStatus(function(response) {
+//       if (response.status != "connected"){
+//         window.location.replace("../index.html")
+//       };
+//     })
+//   }
 
 //LOGOUT FUNCTIONALITY===============================
 $('#logoutButton').on('click', function(){

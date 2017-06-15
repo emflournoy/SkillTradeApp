@@ -31,7 +31,8 @@ function createTradeCard(arr){
 
   arr.map((e)=>{
     console.log(e.cat);
-    let $tradeCard = $("#skillCard").clone();
+    let $tradeCard = $("#skillCardSB").clone();
+    console.log($tradeCard);
     $tradeCard.removeAttr("id");
     let indId= 'Card' + e.id;
     $tradeCard.attr("id", indId);
@@ -48,7 +49,7 @@ function createTradeCard(arr){
       $text.text(e.description);
     let $contactInfo = $tradeCard.find("#card-contact");
     $contactInfo.text(e.contact);
-    $('#skillContainer').append($tradeCard);
+    $('#tradeCardsContainer').append($tradeCard);
   }); //END OF MAP
 
 }

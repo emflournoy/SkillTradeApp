@@ -394,8 +394,7 @@ label {
 
 /*--Skillcards on Trade Manager-----------------*/
 
-#skillCard {
-  /*height: 250px;*/
+#skillCardSB {
   margin-bottom: 30px;
   display:none;
 }
