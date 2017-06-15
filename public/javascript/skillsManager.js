@@ -1,51 +1,29 @@
 $(document).ready(function() {
-// checkLoginState();
+checkLoginState();
 
 
-// function checkLoginState() {
-//   console.log("checking inside function");
-//   FB.getLoginStatus(function(response) {
-//     console.log("inside facebook callback");
-//     console.log("response!!!!!!", response);
-//       // if (response.status != "connected"){
-//       //
-//       //   $.ajax({
-//       //     contentType: 'application/json',
-//       //     type: "DELETE",
-//       //     url: '/',
-//       //   })
-//       //   .done((req, res, next) => {
-//       //     console.log("cookie deleted when they not logged into facebook");
-//       //   })
-//       //   .fail(() => {
-//       //     console.log('not logging out');
-//       //   });
-//       //
-//       //
-//       //   window.location.replace("../index.html")
-//       // };
-//     })
-//     console.log("after the thing that isnt working");
-//   }
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+      if (response.status != "connected"){
+        window.location.replace("../index.html")
+      };
+    })
+  };
 
 
 
 
 
-
-// $.ajax({
-//   contentType: 'application/json',
-//   type: "GET",
-//   url: '/skillManager',
-// })
-// .done((req, res, next) => {
-//
-// })
-// .fail(() => {
-//   console.log('not logging out');
-// });
-
-
+  $.ajax({
+    contentType: 'application/json',
+    type: "GET",
+    url: '/',
+  })
+  .done((req, res, next) => {
+    req.session = null;
+      FB.logout();
+    window.location.replace("../index.html");
+  })
 
 
 
@@ -58,12 +36,8 @@ $('#logoutButton').on('click', function(){
   })
   .done((req, res, next) => {
     req.session = null;
-    console.log("req.session", req.session);
-      FB.logout(function(stuff){
-        console.log("STUFF",stuff);
-         window.location.replace("../index.html")
-      });
-
+      FB.logout();
+    window.location.replace("../index.html");
   })
   .fail(() => {
     console.log('not logging out');
