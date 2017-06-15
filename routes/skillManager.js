@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const FB = require('fb');
 
+
 //this sendsinfo to client side about if they have a cookie (when they dont server side will send them to login page)------------------------------
 router.get('/skillManager', function(req, res, next) {
   var cookiearray = (Object.keys(req.session));
@@ -42,7 +43,7 @@ router.get('/skillManager', function(req, res, next) {
 
 
 router.get('/skillManager', (req, res, next)=>{
-  console.log(req.session);
+  console.log("SM get is working",req.session);
   getSkillCards(req.session.userID)
     .then(function(result){
       req.responseObj.skillCards = result;
@@ -66,7 +67,6 @@ function getSkillCards(userId, cardId){
 }
 
 router.post('/skillManager', (req, res, next)=>{
-  console.log(req.session);
   req.body.user_id = req.session.userID;
   req.body.categories_id = parseInt(req.body.categories_id);
   req.body.environment_id = parseInt(req.body.environment_id);

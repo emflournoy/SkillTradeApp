@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
       if (response.status != "connected"){
@@ -25,7 +24,7 @@ function checkLoginState() {
   });
 //END OF COOKIE CHECKING AND REDIRECTING ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//LOGOUT FUNCTIONALITY===============================
+//LOGOUT FUNCTIONALITY ===============================
 $('#logoutButton').on('click', function(){
   $.ajax({
     contentType: 'application/json',
@@ -33,14 +32,10 @@ $('#logoutButton').on('click', function(){
     url: '/',
   })
   .done((req, res, next) => {
-
-    console.log(res, "RESPONSE????????");
-    console.log("server side cookie checking", req.session);
-
       FB.logout();
     window.location.replace("../index.html");
   })
-  .fail(() => {
+  .fail((err) => {
     console.log('not logging out');
   });
 });
@@ -106,9 +101,10 @@ $('#skillSubmit').on('click', (event)=> {
   .done((data) => {
     $('#newCardModal').modal('hide');
     addNewSkill(data);
+    emptyForm();
   })
   .fail(() => {
-    console.log('not working');
+    console.log('not submitting card');
   });
 });
 
@@ -145,8 +141,19 @@ function addNewSkill(data){
       console.log('deleted: ', data);
     })
     .fail(() => {
-      console.log('not working');
+      console.log('not deleting card');
     });
   });
 }
-});//end of docReady
+
+// EMPTY FORM FUNCTION========================
+function emptyForm (){
+   $('#title-Box').val('');
+   $('#descriptionTextBox').val('');
+   $('#photo-box').val('');
+   $('#contact-Box').val('');
+}
+
+
+//end of docReady
+});

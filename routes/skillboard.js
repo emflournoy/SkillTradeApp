@@ -11,13 +11,16 @@ const cookieSession = require('cookie-session');
 
 router.get('/skillboard',function(req,res,next){
   knex('skill_cards')
-    // .orderBy('id')
-    .join('users', 'user_id', 'users.id')
-    .join('categories', 'categories_id', 'categories.id')
+    .select('skill_cards.contact','skill_cards.title','skill_cards.description','skill_cards.photo','categories.type AS cat','environment.type AS env', 'skill_cards.id')
+    .join('categories', 'skill_cards.categories_id', 'categories.id')
+    .join('environment','skill_cards.environment_id', 'environment.id')
     .then(function(result){
       console.log(result);
       return res.send(result);
-    });
+    })
+    .catch(function(err){
+      console.log(err);
+    })
 });
 
 
