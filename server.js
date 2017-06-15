@@ -64,7 +64,8 @@ app.use(profile);
 
 app.delete('/', (req, res)=>{
   req.session = null;
-  return res.send('you are logged out')
+  console.log(req.session, "please be deleted");
+  return res.send(req.session)
 })
 
 app.use((_req, res) => {
