@@ -11,7 +11,6 @@ const FB = require('fb');
 
 
 // router.use((req, res, next)=>{
-//   console.log("look at me: ",req.session.length);
 //   if (req.session.length == 0){
 //     res.redirect('/public/index.html')
 //   }
@@ -40,7 +39,7 @@ router.get('/skillManager', function(req, res, next) {
 
 
 router.get('/skillManager', (req, res, next)=>{
-  console.log(req.session);
+  console.log("SM get is working",req.session);
   getSkillCards(req.session.userID)
     .then(function(result){
       req.responseObj.skillCards = result;
@@ -64,7 +63,6 @@ function getSkillCards(userId, cardId){
 }
 
 router.post('/skillManager', (req, res, next)=>{
-  console.log(req.session);
   req.body.user_id = req.session.userID;
   req.body.categories_id = parseInt(req.body.categories_id);
   req.body.environment_id = parseInt(req.body.environment_id);
