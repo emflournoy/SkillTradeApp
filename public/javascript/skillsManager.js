@@ -141,8 +141,6 @@ function emptyForm (){
    $('#title-Box').val('');
    $('#descriptionTextBox').val('');
    $('#photo-box').val('');
-   $('#categories').val('select a category');
-   $('#environments').val('select an environment');
    $('#contact-Box').val('');
 }
 
