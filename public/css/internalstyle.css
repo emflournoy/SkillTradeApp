@@ -381,6 +381,7 @@ label {
 #skillCard {
   height: 250px;
   margin-bottom: 30px;
+  display:none;
 }
 
 .card-header {
