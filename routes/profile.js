@@ -18,13 +18,13 @@ router.get('/profile', function(req, res, next) {
     return res.send("no cookies")
   }
   else {
-    // next();
+    next();
   }
 });
 
 router.get('/profile', (req, res, next)=>{
   knex('users')
-    // .where('login',  )
+    .where('id', 11)
     .then(function(result){
       console.log(result);
       return res.send(result);

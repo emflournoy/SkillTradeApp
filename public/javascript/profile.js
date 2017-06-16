@@ -5,7 +5,8 @@ $(document).ready(function() {
     url: '/profile'
   })
   .done((data) => {
-    // console.log("info about if they have a cookie when going to skillmanager", data);
+    console.log(data[0]);
+    createProfile(data[0]);
     if(data === "no cookies"){
       window.location.replace("../index.html");
     }
@@ -73,7 +74,7 @@ function LoginStatus() {
   .done((data) => {
     console.log(data);
     $('#newCardModal').modal('hide');
-    createProfile(data);
+    createProfile(data[0]);
     // emptyForm();
   })
   .fail((err) => {
@@ -86,15 +87,21 @@ function LoginStatus() {
 //CREATE PROFILE PAGES=========================
 function createProfile (data) {
   let $profileCard = $('#profilePage');
-  let $name = $profileCard.find('profile-name');
+  let $name = $profileCard.find('#profile-name');
   $name.text(data.first_name + " " + data.last_name);
   let $profileBody = $('.panel-body');
-  let $profileImg = $('#profileImg').attr('src', data.avatar);
-  let $email = $('#profileEmail').val(data.email);
-  let $phone = $('#profilePhone').val(data.phone);
-  let $city = $('#profileCity').val(data.city);
-  let $state = $('#profileState').val(data.state);
-  let $zip = $('#zip').val(data.zip);
+  let $profileImg= $profileBody.find('#profileImg');
+  $profileImg.attr('src', data.avatar);
+  let $email = $profileBody.find('#profileEmail');
+  $email.text(data.email);
+  let $phone =  $profileBody.find('#profilePhone');
+  $phone.text(data.phone);
+  let $city = $profileBody.find('#profileCity');
+  $city.text(data.city);
+  let $state = $profileBody.find('#profileState');
+  $state.text(data.state);
+  let $zip = $profileBody.find('#zip');
+  $zip.text(data.zip);
 }
 
 
