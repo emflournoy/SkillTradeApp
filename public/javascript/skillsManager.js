@@ -102,6 +102,10 @@ $('#skillSubmit').on('click', (event)=> {
 });
 
 function addNewSkill(data){
+  if(data.photo.length===0){
+    data.photo = '../photos/paul-morris-223786.jpg';
+  }
+
   let userCard = $("#userCard").clone();
   userCard.removeAttr("id");
   let cardId = `${data.id}`;

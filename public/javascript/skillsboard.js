@@ -54,12 +54,16 @@ $.getJSON('/skillboard')
 //FUNCTION TO CREATE SKILL CARDS========================
 function createTradeCard(e){
 
+  arr.map((e)=>{
+    if(e.photo.length===0){
+      e.photo = '../photos/paul-morris-223786.jpg';
+    }
     let $tradeCard = $("#skillCardSB").clone();
     $tradeCard.removeAttr("id");
     let indId= 'Card' + e.id;
     $tradeCard.attr("id", indId);
     // Put in content from api call
-    let $category = $tradeCard.find('#card-category')
+    let $category = $tradeCard.find('#card-category');
     $category.text(`${e.cat}`);
     let $title = $tradeCard.find("#cardTitle");
     $title.text(e.title);
@@ -72,7 +76,7 @@ function createTradeCard(e){
     let $contactInfo = $tradeCard.find("#card-contact");
     $contactInfo.text(e.contact);
     $('#tradeCardsContainer').append($tradeCard);
-  ; //END OF MAP
+  }; //END OF MAP
 
 }
 
