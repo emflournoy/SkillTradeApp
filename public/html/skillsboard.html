@@ -66,28 +66,51 @@
     </div>
 <!-- END HEADER -->
 
-<!-- CATEGORIES -->
-    <div class="container-fluid">
-      <div class="container" id='catFilters'>
-        <h3 class="display-6">Filter by Category</h3>
-        <button type="button" class="btn btn-outline-secondary catEnv" id='clearCat'>Clear Filter</button>
-        <br>
-        <button type="button" class="btn btn-outline-secondary catEnv" id='catButton'>Category</button>
-      </div>
-    </div>
-<!-- END CATEGORIES -->
 
-<!-- ENVIRONMENTS -->
+
+<!-- CATEGORIES and filters on the same row -->
     <div class="container-fluid">
-      <div class="container" id='envFilters'>
-        <br>
-        <h3 class="display-6">Filter by Environment</h3>
-        <button type="button" class="btn btn-outline-secondary catEnv" id='clearEnv'>Clear Filter</button>
-        <button type="button" class="btn btn-outline-secondary catEnv" id='envButton'>Environments</button>
-        <br>
+      <div class="row">
+        <div class="col-sm-1">
+        </div>
+
+<!-- start of category column-->
+        <div class="col-sm-5">
+          <div id="catFilters">
+            <h3 class="display-6">Filter by Category</h3>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                select a category
+              </button>
+              <div class="dropdown-menu scrollable-menu" id="categoryDropdown" aria-labelledby="dropdownMenuButton">
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline-secondary catEnv CAT" id="catButton">Category</button>
+            <button type="button" class="btn btn-outline-secondary catEnv" id="clearCat">Clear Filter</button>
+          </div>
+        </div>
+<!-- END OF CATEGORY COLUMN-->
+<!-- start of environment column-->
+        <div class="col-sm-6">
+          <h3 class="display-6">Filter by Environment</h3>
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              select an environment
+            </button>
+            <div class="dropdown-menu scrollable-menu" id="environmentDropdown" aria-labelledby="dropdownMenuButton">
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-secondary catEnv" id="clearEnv">Clear Filter</button>
+          <button type="button" class="btn btn-outline-secondary catEnv ENV" id="envButton">Environments</button>
+          <br>
+        </div>
+<!-- END OF environments COLUMN-->
+
       </div>
     </div>
-<!-- END ENVIRONMENTS -->
+<!-- END CATEGORIES AND ENVIRONMENTS-->
+
+
 
 
 <!-- CARD DIVIDER -->
