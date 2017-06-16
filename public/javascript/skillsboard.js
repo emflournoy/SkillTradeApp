@@ -37,9 +37,7 @@ $(document).ready(function() {
     });
   });
 
-  $('#modalbtn').on('click', (event)=>{
-    $('.modal').modal('show');
-  });
+
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
@@ -74,6 +72,10 @@ function createTradeCard(e){
   let $contactInfo = $tradeCard.find("#card-contact");
   $contactInfo.text(e.contact);
   $('#tradeCardsContainer').append($tradeCard);
+  $('.intButton').on('click', (event)=>{
+    console.log(event.target);
+    $('#interestedModal').modal('show');
+  });
 }
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 var allCardsArr = [];

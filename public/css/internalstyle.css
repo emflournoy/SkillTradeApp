@@ -209,7 +209,7 @@ label {
 
 
 /* -- buttons --------------------------------- */
-#submit {
+#submit{
   background-color: #DC5C05;
   border-color: #ccc;
   width: 150px;
@@ -252,7 +252,7 @@ label {
   border-radius: 3px;
 }
 
-#modalbtn {
+#modalbtn{
   color: white;
   background-color:#FFAC00;
   border-color: white;
@@ -264,7 +264,7 @@ label {
   border-color: white;
 }
 
-.modal-body {
+#newCardModalBody {
   min-height: 550px;
   overflow-y: auto;
 }
@@ -496,4 +496,11 @@ h3{
 
 #clearEnv:hover, #clearCat:hover{
   background-color: #dab66d;
+}
+
+
+/*--Filter buttons-----------------*/
+#interestedModalbody{
+  min-height: 500px;
+  overflow-y: auto;
 }

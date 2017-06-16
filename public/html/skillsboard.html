@@ -123,13 +123,64 @@
               </div>
               <p class="card-text" id="cardDescription">With supporting text below as a natural lead-in to additional content.</p>
               <p class = "card-contact">Contact: <span id="card-contact">Contact Info</span></p>
-
+              <button type="button" class="btn btn-primary intButton" id="intButton" data-toggle="modal" data-target="#exampleModal">
+                Interested!
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
 <!-- END BLANK SKILL CARD -->
+
+
+<!-- Modal -->
+  <div class="modal fade" id="interestedModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Connect to share skills!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="interestedModalBody">
+
+          <!-- FORM -->
+          <div class="container" id = "intModal">
+            <div class="row" id="intModalBody">
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea class="form-control" rows="10" id="comment"></textarea>
+                  <span class="form-highlight"></span>
+                  <span class="form-bar"></span>
+                  <label class="float-label" for="description">description</label>
+
+                </div>
+              </div>
+
+
+            <div class="col-md-12"><br></div>
+
+            <div class="col-md-2 col-xs-4">
+              <button type="button" id="skillSubmit" class="btn btn-outline-secondary btn-lg">submit</button>
+            </div>
+
+          </div>
+        </div>
+        <!-- END FORM -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL -->
+
+
+
+
+
 
 
 <!-- EXCESSIVE INFO CARD -->
