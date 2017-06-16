@@ -492,8 +492,30 @@ h3{
   background-color: #fadea5;
   border-color: #FFAC00;
   font-weight: 400;
+
 }
 
 #clearEnv:hover, #clearCat:hover{
   background-color: #dab66d;
+}
+
+
+#categoryDropdown{
+  max-height: 100000px;
+}
+#environmentDropdown{
+  max-height: 100000px;
+}
+#categories{
+
+  background-color: #c4e4e0;
+  font-weight: lighter;
+  color: #315853;
+  border-color: #5ab1a6;
+}
+#environments{
+  background-color: #c4e4e0;
+  font-weight: lighter;
+  color: #315853;
+  border-color: #5ab1a6;
 }
