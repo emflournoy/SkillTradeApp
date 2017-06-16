@@ -49,13 +49,7 @@ $('#logoutButton').on('click', function(){
 //SUBMIT PROFILE FORM========================
 
 $('#profileSubmit').on('click', (event)=> {
-  appendProfile();
-});
-$('#editButton').on('click', (event)=>{
-  appendProfile();
-})
 
-function appendProfile(){
   let profileFormObj = {
     first_name: $('#first_name').val(),
     last_name: $('#last_name').val(),
@@ -67,6 +61,7 @@ function appendProfile(){
     avatar: $('#photoAvatar').val(),
     login: ''
   };
+
   //CHECK LOGIN STATUS AND GET ID INFO
   loginStatus();
   function loginStatus(){
@@ -89,7 +84,6 @@ function appendProfile(){
     }
   }
 
-
   $.ajax({
     contentType: 'application/json',
     type: "PATCH",
@@ -105,40 +99,25 @@ function appendProfile(){
   .fail((err) => {
     console.log('not updating profile');
   });
-}
-
+});
 //CREATE PROFILE PAGES=========================
 function createProfile (data) {
   let $profileCard = $('#profilePage');
   let $name = $profileCard.find('#profile-name');
-  if(data.first_name || data.last_name){
-    $name.text(data.first_name + " " + data.last_name);
-  }
+  $name.text(data.first_name + " " + data.last_name);
   let $profileBody = $('.panel-body');
   let $profileImg= $profileBody.find('#profileImg');
-  if(data.avatar){
   $profileImg.attr('src', data.avatar);
-  }
   let $email = $profileBody.find('#profileEmail');
-  if(data.email){
-    $email.text(data.email);
-  }
+  $email.text(data.email);
   let $phone =  $profileBody.find('#profilePhone');
-  if(data.phone){
-    $phone.text(data.phone);
-  }
+  $phone.text(data.phone);
   let $city = $profileBody.find('#profileCity');
-  if(data.city) {
-    $city.text(data.city);
-  }
+  $city.text(data.city);
   let $state = $profileBody.find('#profileState');
-  if(data.state) {
-    $state.text(data.state);
-  }
+  $state.text(data.state);
   let $zip = $profileBody.find('#zip');
-  if(data.zip){
-    $zip.text(data.zip);
-  }
+  $zip.text(data.zip);
 }
 
 });//END OF DOCREADY=========================
