@@ -309,7 +309,7 @@ label {
   color: #DC5C05;
 }
 
-#blankTradeCard{
+#blankTradeCard, #skillcardSB{
   display: none;
 }
 
