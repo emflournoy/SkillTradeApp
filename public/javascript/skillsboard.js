@@ -100,8 +100,8 @@ $.getJSON('/skillboard')
       let allArr = response['allArr'];
       let skillCards = response['skillCards'];
       allCardsArr = skillCards;
-      createFilterButtons(allArr[0], 'catButton', 'catFilters');
-      createFilterButtons(allArr[1], 'envButton', 'envFilters');
+      createFilterButtons(allArr[0], 'catButton', 'categoryDropdown');
+      createFilterButtons(allArr[1], 'envButton', 'environmentDropdown');
       for(let i=0; i<skillCards.length; i++){
         createTradeCard(skillCards[i]);
       }
@@ -119,6 +119,7 @@ function createFilterButtons(arr, idName, appendTo){
     $clonedItem.attr("buttonId", arr[i].id);
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
+
     //make filter option
   $clonedItem.on('click',function(event){
     $('.btn').removeClass('activeFilter');
@@ -131,7 +132,20 @@ function createFilterButtons(arr, idName, appendTo){
         return obj;
       }
     })
-    console.log(filtered);
+    if($clonedItem.hasClass('CAT')){
+      console.log("this is a caterogyr selection");
+      // $clonedItem.attr("id", idName);
+      $("#categories").html($target.html())
+    }
+    else if($clonedItem.hasClass('ENV')){
+      console.log("this is an environment selection");
+      // $clonedItem.attr("id", idName);
+      $("#environments").html($target.html())
+    }
+
+
+
+
     if(filtered.length===0){
       $('#filterStatus').text('No results found. Try again!');
     } else {
@@ -145,10 +159,13 @@ function createFilterButtons(arr, idName, appendTo){
 }
 
 $('#clearEnv').on('click', ()=>{
+$("#environments").html("Select an environment")
+
   makeCards();
 });
 
 $('#clearCat').on('click', ()=>{
+  $("#categories").html("Select a category")
   makeCards();
 });
 
@@ -191,6 +208,11 @@ $('#intSubmit').on('click', (event)=> {
 
 
 
+
+$("#categories").on("click", function(){
+  console.log("clicked to select category filter");
+  console.log($("#categories").children());
+});
 
 //END DOC READY
 });
