@@ -10,18 +10,16 @@ const cookieSession = require('cookie-session');
 const FB = require('fb');
 
 
-//this sendsinfo to client side about if they have a cookie (when they dont server side will send them to login page)------------------------------
+//this sends info to client side about if they have a cookie (when they dont server side will send them to login page)------------------------------
 router.get('/skillManager', function(req, res, next) {
   var cookiearray = (Object.keys(req.session));
   if (cookiearray.length == 0){
-    console.log("no cookies server side for skillmanager");
     return res.send("no cookies")
   }
   else {
     next();
   }
 });
-//-------------------------------------------------------------------
 
 //FORM DROPDOWNS (arr of 2arr of objs)====================
 router.get('/skillManager', function(req, res, next) {

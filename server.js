@@ -40,7 +40,7 @@ app.use(cookieSession({
 }));
 
 app.use((req, res, next)=>{
-  console.log("look at me: ",req.session.length);
+  // console.log("look at me: ",req.session.length);
   // if (req.session.length == 0){
   //   res.redirect('/public/index.html')
   //

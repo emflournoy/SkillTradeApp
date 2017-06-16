@@ -7,36 +7,42 @@ const router = express.Router();
 const knex = require('../knex');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
+const FB = require('fb');
 
-router.get('/profile/:id', (req, res, next)=>{
+
+
+router.get('/profile', function(req, res, next) {
+  var cookiearray = (Object.keys(req.session));
+  if (cookiearray.length === 0){
+    console.log("no cookies server side for skillmanager");
+    return res.send("no cookies")
+  }
+  else {
+    // next();
+  }
+});
+
+router.get('/profile', (req, res, next)=>{
   knex('users')
-    .where('id', req.params.id)
+    // .where('login',  )
     .then(function(result){
       console.log(result);
       return res.send(result);
     });
 });
 
-router.post('/profile', (req, res, next)=>{
-  knex('users')
-    .insert(req.body, '*')
-    .then(function(result){
-      return res.send(result);
-    })
-    .catch((err)=>{
-      return res.status(400).send(err);
-    });
-});
 
-router.patch('/profile/:id', (req,res,next) => {
+router.patch('/profile', (req,res,next) => {
+  req.body.login = parseInt(req.body.login);
+  req.body.zip = parseInt(req.body.zip);
   knex('users')
-    .where('id', req.params.id)
+    .where('login', req.body.login)
     .update(req.body, '*')
     .then(function(result){
       return res.send(result);
     })
     .catch((err)=>{
-      return res.status(400).send(err);
+      return res.send(err);
     });
 })
 

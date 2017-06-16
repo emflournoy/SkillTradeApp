@@ -28,7 +28,7 @@ router.get('/skillboard', function(req, res, next) {
     })
   });
 
-
+//CHECKS COOKIES FOR SKILL BOARD PAGE==============
 router.get('/skillboard', function(req, res, next) {
   var cookiearray = (Object.keys(req.session));
   if (cookiearray.length == 0){
@@ -39,8 +39,6 @@ router.get('/skillboard', function(req, res, next) {
     next();
   }
 });
-
-
 
 router.get('/skillboard',function(req,res,next){
   knex('skill_cards')
