@@ -14,7 +14,6 @@ const FB = require('fb');
 router.get('/profile', function(req, res, next) {
   var cookiearray = (Object.keys(req.session));
   if (cookiearray.length === 0){
-    console.log("no cookies server side for skillmanager");
     return res.send("no cookies")
   }
   else {
@@ -24,7 +23,7 @@ router.get('/profile', function(req, res, next) {
 
 router.get('/profile', (req, res, next)=>{
   knex('users')
-    .where('id', 11)
+    .where('id', req.session.userID)
     .then(function(result){
       console.log(result);
       return res.send(result);
@@ -33,12 +32,14 @@ router.get('/profile', (req, res, next)=>{
 
 
 router.patch('/profile', (req,res,next) => {
-  req.body.login = parseInt(req.body.login);
+  console.log(req.body)
+  req.body.hashed_password = parseInt(req.body.hashed_password);
   req.body.zip = parseInt(req.body.zip);
   knex('users')
-    .where('login', req.body.login)
+    .where('hashed_password', req.body.hashed_password)
     .update(req.body, '*')
     .then(function(result){
+      console.log(result);
       return res.send(result);
     })
     .catch((err)=>{
