@@ -5,11 +5,19 @@ $(document).ready(function() {
     url: '/profile'
   })
   .done((data) => {
-    console.log(data[0]);
-    createProfile(data[0]);
     if(data === "no cookies"){
       window.location.replace("../index.html");
     }
+    if(data[0].first_name.length === 0 && data[0].last_name.length){
+      let $profile = $('#profilePage');
+      $profile.hide();
+    } else {
+      let $makeProfile = $("#modalbtn");
+      $makeProfile.hide();
+      console.log(data[0]);
+      createProfile(data[0]);
+    }
+
   })
   .fail(() => {
     console.log('/GETnot working');
@@ -18,6 +26,10 @@ $(document).ready(function() {
 $('#modalbtn').on('click', (event)=>{
   $('.modal').modal('show');
 });
+$('#editButton').on('click', (event)=>{
+  $('.modal').modal('show');
+});
+
 //LOGOUT FUNCTIONALITY ===============================
 $('#logoutButton').on('click', function(){
   $.ajax({
@@ -37,22 +49,28 @@ $('#logoutButton').on('click', function(){
 //SUBMIT PROFILE FORM========================
 
 $('#profileSubmit').on('click', (event)=> {
+  appendProfile();
+});
+$('#editButton').on('click', (event)=>{
+  appendProfile();
+})
 
-let profileFormObj = {
-  first_name: $('#first_name').val(),
-  last_name: $('#last_name').val(),
-  email: $('#email').val(),
-  phone: $('#phone').val(),
-  city: $('#city').val(),
-  state: $('#state').val(),
-  zip: $('#Zip-Code').val(),
-  avatar: $('#photoAvatar').val(),
-  login: ''
-};
-LoginStatus();
-function LoginStatus() {
-
-  FB.getLoginStatus(function(response) {
+function appendProfile(){
+  let profileFormObj = {
+    first_name: $('#first_name').val(),
+    last_name: $('#last_name').val(),
+    email: $('#email').val(),
+    phone: $('#phone').val(),
+    city: $('#city').val(),
+    state: $('#state').val(),
+    zip: $('#Zip-Code').val(),
+    avatar: $('#photoAvatar').val(),
+    login: ''
+  };
+  //CHECK LOGIN STATUS AND GET ID INFO
+  loginStatus();
+  function loginStatus(){
+    FB.getLoginStatus(function(response) {
       if (response.status == "connected" && response.status!==undefined){
         loginResponse = response.authResponse.userID;
         profileFormObj.login = loginResponse;
@@ -61,49 +79,66 @@ function LoginStatus() {
         console.log(profileFormObj.login);
         return profileFormObj.login;
       }
-  });
-}
+    });
+  }
+
+  let reqObj = {};
+  for(var key in profileFormObj){
+    if(profileFormObj[key].length > 0){
+      reqObj[key] = profileFormObj[key];
+    }
+  }
+
 
   $.ajax({
     contentType: 'application/json',
     type: "PATCH",
     url: '/profile',
-    data: JSON.stringify(profileFormObj),
+    data: JSON.stringify(reqObj),
     dataType: 'json',
   })
   .done((data) => {
     console.log(data);
     $('#newCardModal').modal('hide');
     createProfile(data[0]);
-    // emptyForm();
   })
   .fail((err) => {
     console.log('not updating profile');
   });
-
-
-});
+}
 
 //CREATE PROFILE PAGES=========================
 function createProfile (data) {
   let $profileCard = $('#profilePage');
   let $name = $profileCard.find('#profile-name');
-  $name.text(data.first_name + " " + data.last_name);
+  if(data.first_name || data.last_name){
+    $name.text(data.first_name + " " + data.last_name);
+  }
   let $profileBody = $('.panel-body');
   let $profileImg= $profileBody.find('#profileImg');
+  if(data.avatar){
   $profileImg.attr('src', data.avatar);
+  }
   let $email = $profileBody.find('#profileEmail');
-  $email.text(data.email);
+  if(data.email){
+    $email.text(data.email);
+  }
   let $phone =  $profileBody.find('#profilePhone');
-  $phone.text(data.phone);
+  if(data.phone){
+    $phone.text(data.phone);
+  }
   let $city = $profileBody.find('#profileCity');
-  $city.text(data.city);
+  if(data.city) {
+    $city.text(data.city);
+  }
   let $state = $profileBody.find('#profileState');
-  $state.text(data.state);
+  if(data.state) {
+    $state.text(data.state);
+  }
   let $zip = $profileBody.find('#zip');
-  $zip.text(data.zip);
+  if(data.zip){
+    $zip.text(data.zip);
+  }
 }
-
-
 
 });//END OF DOCREADY=========================

@@ -40,11 +40,6 @@ app.use(cookieSession({
 }));
 
 app.use((req, res, next)=>{
-  // console.log("look at me: ",req.session.length);
-  // if (req.session.length == 0){
-  //   res.redirect('/public/index.html')
-  //
-  // }
     next();
 })
 
@@ -63,26 +58,24 @@ app.use(skillManager);
 app.use(profile);
 
 // this route reads if they have cookies when the splash page loads. this info is used to changed to login button text from login to continue ----------------------------------
-app.get('/continue', function(req,res,next){
-  console.log("inside CONTINUE route");
+app.get('/continue', function(req,res,next){;
   var cookiearray = (Object.keys(req.session));
-  if (cookiearray.length != 0){
-    console.log("there is a cookie when going to home page");
+  if (cookiearray.length !== 0){
+
     return res.send("yes cookie")
   }
-  else if (cookiearray.length == 0){
+  else if (cookiearray.length === 0){
     return res.send("no cookie")
   }
   else{
     next();
   }
 })
-//----------------------------------------------------------------------------------------------------------------------------
+
 
 
 app.delete('/', (req, res)=>{
   req.session = null;
-  console.log(req.session, "please be deleted");
   return res.send(req.session)
 })
 
