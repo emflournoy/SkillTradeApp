@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SkilBoard</title>
+    <!-- Latest compiled and minified CSS -->
+   <script src="../javascript/oauth.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src='../javascript/lib/adapter.js'></script>
+    <!-- OUR SCRIPT -->
+
+    <meta name="keywords" content="JavaScript, WebRTC" />
+    <meta name="description" content="WebRTC codelab" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../css/internalstyle.css">
+
+
+  </head>
+  <body>
+
+<!-- NAV BAR -->
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded sticky">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="#">SkilBuild</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="skillsboard.html">Skill Board</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="skillsManager.html">Skill Manager</a>
+        </li>
+
+        <li class="nav-item navbar-toggler-right">
+          <button class="btn btn-outline-secondary btn-sm" id="logoutButton" href="../index.html">Logout</button>
+        </li>
+
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> -->
+
+      </ul>
+    </div>
+  </nav>
+<!-- END NAV BAR -->
+
+
+<!-- HEADER -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">SkilManager</h1>
+        <p class="lead">You're a smart cookie. You've got so many skills. Let's get them out into the world.</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="modalbtn" data-toggle="modal" data-target="#exampleModal">
+          Add new skill!
+        </button>
+      </div>
+    </div>
+<!-- END HEADER -->
+
+
+
+
+
+
+
+
+<video id="localVideo" autoplay muted></video>
+  <video id="remoteVideo" autoplay muted></video>
+
+  <div>
+    <button id="startButton">Start</button>
+    <button id="callButton">Call</button>
+    <button id="hangupButton">Hang Up</button>
+  </div>
+
+
+
+
+  <!-- FOOTER -->
+      <nav class="navbar navbar-fixed-bottom" id="footer">
+        <a class="navbar-brand" href="#">SkilBuild</a>
+      </nav>
+  <!-- END FOOTER -->
+
+  <script>
+  var localStream, localPeerConnection, remotePeerConnection;
+
+  var localVideo = document.getElementById("localVideo");
+  var remoteVideo = document.getElementById("remoteVideo");
+
+  var startButton = document.getElementById("startButton");
+  var callButton = document.getElementById("callButton");
+  var hangupButton = document.getElementById("hangupButton");
+  startButton.disabled = false;
+  callButton.disabled = true;
+  hangupButton.disabled = true;
+  startButton.onclick = start;
+  callButton.onclick = call;
+  hangupButton.onclick = hangup;
+
+  function trace(text) {
+    console.log((performance.now() / 1000).toFixed(3) + ": " + text);
+  }
+
+  function gotStream(stream){
+    trace("Received local stream");
+    localVideo.src = URL.createObjectURL(stream);
+    localStream = stream;
+    callButton.disabled = false;
+  }
+
+  function start() {
+    trace("Requesting local stream");
+    startButton.disabled = true;
+    getUserMedia({audio:true, video:true}, gotStream,
+      function(error) {
+        trace("getUserMedia error: ", error);
+      });
+  }
+
+  function call() {
+    callButton.disabled = true;
+    hangupButton.disabled = false;
+    trace("Starting call");
+
+    if (localStream.getVideoTracks().length > 0) {
+      trace('Using video device: ' + localStream.getVideoTracks()[0].label);
+    }
+    if (localStream.getAudioTracks().length > 0) {
+      trace('Using audio device: ' + localStream.getAudioTracks()[0].label);
+    }
+
+    var servers = null;
+
+    localPeerConnection = new RTCPeerConnection(servers);
+    trace("Created local peer connection object localPeerConnection");
+    localPeerConnection.onicecandidate = gotLocalIceCandidate;
+
+    remotePeerConnection = new RTCPeerConnection(servers);
+    trace("Created remote peer connection object remotePeerConnection");
+    remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+    remotePeerConnection.onaddstream = gotRemoteStream;
+
+    localPeerConnection.addStream(localStream);
+    trace("Added localStream to localPeerConnection");
+    localPeerConnection.createOffer(gotLocalDescription,handleError);
+  }
+
+  function gotLocalDescription(description){
+    localPeerConnection.setLocalDescription(description);
+    trace("Offer from localPeerConnection: \n" + description.sdp);
+    remotePeerConnection.setRemoteDescription(description);
+    remotePeerConnection.createAnswer(gotRemoteDescription,handleError);
+  }
+
+  function gotRemoteDescription(description){
+    remotePeerConnection.setLocalDescription(description);
+    trace("Answer from remotePeerConnection: \n" + description.sdp);
+    localPeerConnection.setRemoteDescription(description);
+  }
+
+  function hangup() {
+    trace("Ending call");
+    localPeerConnection.close();
+    remotePeerConnection.close();
+    localPeerConnection = null;
+    remotePeerConnection = null;
+    hangupButton.disabled = true;
+    callButton.disabled = false;
+  }
+
+  function gotRemoteStream(event){
+    remoteVideo.src = URL.createObjectURL(event.stream);
+    trace("Received remote stream");
+  }
+
+  function gotLocalIceCandidate(event){
+    if (event.candidate) {
+      remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+      trace("Local ICE candidate: \n" + event.candidate.candidate);
+    }
+  }
+
+  function gotRemoteIceCandidate(event){
+    if (event.candidate) {
+      localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+      trace("Remote ICE candidate: \n " + event.candidate.candidate);
+    }
+  }
+
+  function handleError(){}
+
+  </script>
+
+<script src="../javascript/skillsManager.js" type="text/javascript"></script>
+
+<script src='http://localhost:3000/socket.io/socket.io.js'></script>
+<script src="../javascript/main0.js"></script>
+
+
+  </body>
+</html>
