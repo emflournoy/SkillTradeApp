@@ -504,3 +504,19 @@ h3{
   min-height: 500px;
   overflow-y: auto;
 }
+
+/*--------PROFILE PAGE------------*/
+#profileImg{
+  height: 60vh;
+}
+.linkButton{
+  border-color:#DC5C05;
+  color: #DC5C05;
+  font-weight: lighter;
+  background-color: white;
+}
+
+#linkButton:hover{
+  background-color:#DC5C05;
+  color: white;
+  font-weight: lighter;

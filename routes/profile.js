@@ -32,17 +32,22 @@ router.get('/profile', (req, res, next)=>{
 
 
 router.patch('/profile', (req,res,next) => {
-  console.log(req.body)
-  req.body.hashed_password = parseInt(req.body.hashed_password);
-  req.body.zip = parseInt(req.body.zip);
+  if(req.body.zip){
+    req.body.zip = parseInt(req.body.zip);
+  }
   knex('users')
-    .where('hashed_password', req.body.hashed_password)
+    .where('login', parseInt(req.body.login))
     .update(req.body, '*')
     .then(function(result){
-      console.log(result);
-      return res.send(result);
+      knex('users')
+      .where('login', parseInt(req.body.login))
+      .then((data)=>{
+        console.log(data);
+        return res.send(data);
+      })
     })
     .catch((err)=>{
+      console.log(err);
       return res.send(err);
     });
 })
