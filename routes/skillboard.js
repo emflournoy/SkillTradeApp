@@ -42,9 +42,10 @@ router.get('/skillboard', function(req, res, next) {
 
 router.get('/skillboard',function(req,res,next){
   knex('skill_cards')
-    .select('skill_cards.contact','skill_cards.title','skill_cards.description','skill_cards.photo','categories.type AS cat','environment.type AS env', 'skill_cards.id')
+    .select('skill_cards.contact','skill_cards.title','skill_cards.description','skill_cards.photo','categories.type AS cat','environment.type AS env', 'skill_cards.id', 'skill_cards.user_id')
     .join('categories', 'skill_cards.categories_id', 'categories.id')
     .join('environment','skill_cards.environment_id', 'environment.id')
+    .join('users', 'users.id','skill_cards.user_id')
     .then(function(result){
       req.responseObj.skillCards = result;
       console.log(result);
@@ -55,6 +56,21 @@ router.get('/skillboard',function(req,res,next){
     })
 });
 
+
+router.post('/skillboard', (req, res, next)=>{
+  console.log(req.body);
+  knex('interested')
+    .insert(req.body)
+    .returning('*')
+    .then(function(intPost){
+      console.log(intPost);
+      return res.send("Message sent!");
+    })
+    .catch((err)=>{
+      console.log(err);
+      return res.status(400).send(err);
+    });
+});
 
 
 

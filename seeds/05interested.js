@@ -10,5 +10,8 @@ exports.seed = function(knex, Promise) {
         {id: 3, interested: 'This seems awesome... could we find a time to exchange skills?', user_id: 2, skill_cards_id: 7},
         {id: 4, interested: 'Man I have always wanted to learn this. Would you be up for a swap?', user_id: 2, skill_cards_id: 8},
       ]);
-    });
+    })
+    .then(function(){
+    return knex.raw("SELECT setval('interested_id_seq', (SELECT MAX(id) FROM interested))");
+  });
 };

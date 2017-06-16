@@ -50,14 +50,24 @@ $.getJSON('/skillboard')
     });
 
 //FUNCTION TO CREATE SKILL CARDS========================
+
+var interestedCard;
+var interestedUser;
+
 function createTradeCard(e){
+  console.log(e);
    if(e.photo===''){
     e.photo = '../photos/paul-morris-223786.jpg';
    }
   let $tradeCard = $("#skillCardSB").clone();
+  let $intButton = $('.intButton');
   $tradeCard.removeAttr("id");
-  let indId= 'Card' + e.id;
-  $tradeCard.attr("id", indId);
+  let indId = e.id;
+  let intUserId = e.user_id;
+  $tradeCard.attr("cardId", indId);
+  $tradeCard.attr("intUser", intUserId)
+  $intButton.attr("cardId", indId);
+  $intButton.attr("intUser", intUserId);
   // Put in content from api call
   let $category = $tradeCard.find('#card-category');
   $category.text(`${e.cat}`);
@@ -73,10 +83,15 @@ function createTradeCard(e){
   $contactInfo.text(e.contact);
   $('#tradeCardsContainer').append($tradeCard);
   $('.intButton').on('click', (event)=>{
-    console.log(event.target);
+    $target = $(event.target);
+    interestedCard = $target.attr("cardId");
+    interestedUser = $target.attr("intUser");
     $('#interestedModal').modal('show');
   });
 }
+
+
+
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 var allCardsArr = [];
 
@@ -148,23 +163,25 @@ function makeCards(){
 // SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
 $('#intSubmit').on('click', (event)=> {
   let interested_obj = {
-    message: $('#intMessage').val(),
-    skill_id: $()
+    interested: $('#intMessage').val(),
+    user_id: interestedUser,
+    skill_cards_id: interestedCard,
   };
-
+  console.log(interested_obj);
   $.ajax({
     contentType: 'application/json',
     type: "POST",
-    url: '/skillBoard',
+    url: '/skillboard',
     data: JSON.stringify(interested_obj),
     dataType: 'json',
   })
-  .done((data) => {
+  // .done((data) => {
+  //   $('#interestedModal').modal('hide');
+  //   console.log('cheese');
+  // })
+  .fail((err) => {
     $('#interestedModal').modal('hide');
-    addNewSkill(data);
-    emptyForm();
-  })
-  .fail(() => {
+    console.log(err);
     console.log('not submitting message');
   });
 });
