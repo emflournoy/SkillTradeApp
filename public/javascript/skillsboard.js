@@ -145,6 +145,35 @@ function makeCards(){
   }
 }
 
+// SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
+$('#intSubmit').on('click', (event)=> {
+  let interested_obj = {
+    message: $('#intMessage').val(),
+    skill_id: $()
+  };
+
+  $.ajax({
+    contentType: 'application/json',
+    type: "POST",
+    url: '/skillBoard',
+    data: JSON.stringify(interested_obj),
+    dataType: 'json',
+  })
+  .done((data) => {
+    $('#interestedModal').modal('hide');
+    addNewSkill(data);
+    emptyForm();
+  })
+  .fail(() => {
+    console.log('not submitting message');
+  });
+});
+
+
+
+
+
+
 
 //END DOC READY
 });
