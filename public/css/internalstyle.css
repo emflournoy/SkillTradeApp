@@ -524,11 +524,19 @@ h3{
 }
 
 #categoryDropdown{
-  max-height: 100000px;
+  max-height: 250px;
 }
 #environmentDropdown{
+  max-height: 250px;
+}
+
+#categoryDropdownBoard{
   max-height: 100000px;
 }
+#environmentDropdownBoard{
+  max-height: 100000px;
+}
+
 #categories{
 
   background-color: #c4e4e0;
