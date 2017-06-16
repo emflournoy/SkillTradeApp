@@ -271,7 +271,8 @@ label {
 
 /* -- nav ------------------------------------- */
 .navbar{
-  background-color: #6EC5B8;
+  background-color: #315853;
+  color: white;
 }
 
 .navbar .navbar-brand{
@@ -282,7 +283,20 @@ label {
 }
 
 .navbar .navbar-brand:hover{
-  color: #FFAC00;
+  color: white;
+  cursor: default;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,   .navbar-light .navbar-nav .open>.nav-link {
+  color: white;
+  font-weight: normal;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #DC5C05;
 }
 
 .navbar .nav-link{
@@ -350,7 +364,7 @@ label {
   font-weight: lighter;
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
   border-color: #DC5C05;
-  background-color: #f5eee5;
+  background-color: #edf7f6;
 }
 
 .card-block p{
@@ -394,7 +408,7 @@ label {
   padding-top: 20px;
 }
 
-#userCard {
+#userCard, #Cardundefined {
   display: none;
 }
 
@@ -433,6 +447,18 @@ label {
     margin-right: 30px;
 }
 
+#skillSubmit, #categories, #environments{
+  border-color:#DC5C05;
+  color: #DC5C05;
+  font-weight: lighter;
+}
+
+#skillSubmit:hover, #categories:hover, #environments:hover{
+  background-color:#DC5C05;
+  color: white;
+  font-weight: lighter;
+}
+
 /*--Filter buttons-----------------*/
 
 h3{
@@ -460,4 +486,14 @@ h3{
 
 #envButton , #catButton{
   display: none;
+}
+
+#clearEnv, #clearCat{
+  background-color: #fadea5;
+  border-color: #FFAC00;
+  font-weight: 400;
+}
+
+#clearEnv:hover, #clearCat:hover{
+  background-color: #dab66d;
 }
