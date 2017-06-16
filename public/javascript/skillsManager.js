@@ -1,12 +1,5 @@
 $(document).ready(function() {
 
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-      if (response.status != "connected"){
-        window.location.replace("../index.html")
-      };
-    })
-  };
 
   //THIS CALL CHECKS IF THEY HAVE COOKIES AND IF NOT SENDS THEM TO THE LOGIN PAGE WHICH GETS THE LOGIN COOKIES+++++++++++++++++++++++++++++++++++++++++++++++++
   $.ajax({
@@ -14,7 +7,7 @@ function checkLoginState() {
     url: '/skillManager'
   })
   .done((data) => {
-    console.log("info about if they have a cookie when going to skillmanager", data);
+    // console.log("info about if they have a cookie when going to skillmanager", data);
     if(data === "no cookies"){
       window.location.replace("../index.html");
     }
@@ -121,7 +114,7 @@ function addNewSkill(data){
   $title.html(data.title);
   let $image = userCard.find("img");
   $image.attr('src', data.photo);
-  userCard.children(".card").children("#card-category").text(data.cat_type);
+  userCard.children(".card").children('.borderRow').children('#catCard').children("#card-category").text(data.cat_type);
   let $environment = userCard.find("h5");
   $environment.html(data.env_type);
   let $description = userCard.find("#cardDescription");
@@ -129,7 +122,6 @@ function addNewSkill(data){
   let $contact = userCard.find("#card-contact");
   $contact.html(data.contact);
   $('#userContainer').append(userCard);
-
   // DELETE SKILL CARD FUNCTION ======================
   $('.close').on('click',function(event){
     var deleteCardId = $(this).parents('.deleteClass')[0].id;
