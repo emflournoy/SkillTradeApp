@@ -41,11 +41,9 @@ router.get('/skillManager', function(req, res, next) {
 
 
 router.get('/skillManager', (req, res, next)=>{
-  console.log("SM get is working",req.session);
   getSkillCards(req.session.userID)
     .then(function(result){
       req.responseObj.skillCards = result;
-      console.log(result);
       res.send(req.responseObj);
     });
 });
@@ -78,7 +76,6 @@ router.post('/skillManager', (req, res, next)=>{
       })
     })
     .catch((err)=>{
-      console.log(err);
       return res.status(400).send(err);
     });
 });
