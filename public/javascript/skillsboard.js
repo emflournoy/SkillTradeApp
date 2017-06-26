@@ -10,13 +10,12 @@ $(document).ready(function() {
       url: '/skillManager'
     })
     .done((data) => {
-      console.log("info about if they have a cookie when going to skillmanager", data);
       if(data === "no cookies"){
         window.location.replace("../index.html");
       }
     })
     .fail(() => {
-      console.log('/GETnot working');
+      console.log('/GET not working');
     });
 //-------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +54,6 @@ var interestedCard;
 var interestedUser;
 
 function createTradeCard(e){
-  console.log(e);
    if(e.photo===''){
     e.photo = '../photos/paul-morris-223786.jpg';
    }
@@ -133,13 +131,9 @@ function createFilterButtons(arr, idName, appendTo){
       }
     })
     if($clonedItem.hasClass('CAT')){
-      console.log("this is a caterogyr selection");
-      // $clonedItem.attr("id", idName);
       $("#categories").html($target.html())
     }
     else if($clonedItem.hasClass('ENV')){
-      console.log("this is an environment selection");
-      // $clonedItem.attr("id", idName);
       $("#environments").html($target.html())
     }
 
@@ -184,7 +178,6 @@ $('#intSubmit').on('click', (event)=> {
     user_id: interestedUser,
     skill_cards_id: interestedCard,
   };
-  console.log(interested_obj);
   $.ajax({
     contentType: 'application/json',
     type: "POST",
@@ -194,7 +187,6 @@ $('#intSubmit').on('click', (event)=> {
   })
   // .done((data) => {
   //   $('#interestedModal').modal('hide');
-  //   console.log('cheese');
   // })
   .fail((err) => {
     $('#interestedModal').modal('hide');
@@ -203,16 +195,6 @@ $('#intSubmit').on('click', (event)=> {
   });
 });
 
-
-
-
-
-
-
-$("#categories").on("click", function(){
-  console.log("clicked to select category filter");
-  console.log($("#categories").children());
-});
 
 //END DOC READY
 });
