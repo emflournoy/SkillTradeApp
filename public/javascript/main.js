@@ -7,7 +7,6 @@ $(document).ready(function(){
     url: '/continue'
   })
   .done((data) => {
-    console.log("info about if they have a cookie when getting to the login page", data);
     if(data === "yes cookie"){
       $('#login').html('Continue');
     }
@@ -16,7 +15,7 @@ $(document).ready(function(){
     }
   })
   .fail(() => {
-    console.log('/GETnot working');
+    console.log('/GET not working');
   });
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -85,13 +84,10 @@ function runRouteAfterLogin(userInputs, loginResponse){
           dataType: 'json'
         })
         .done((data) => {
-          console.log("get data", data);
           window.location.replace("html/skillsManager.html");
-
-
         })
         .fail(() => {
-          console.log('/GETnot working');
+          console.log('/GET not working');
         });
       }
     })
