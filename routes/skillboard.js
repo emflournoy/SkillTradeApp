@@ -20,7 +20,6 @@ router.get('/skillboard', function(req, res, next) {
     knex('environment')
       .then((data2)=>{
         allArr.push(data2);
-        // res.send(allArr);
         req.responseObj = {};
         req.responseObj.allArr = allArr;
         next();
@@ -32,7 +31,6 @@ router.get('/skillboard', function(req, res, next) {
 router.get('/skillboard', function(req, res, next) {
   var cookiearray = (Object.keys(req.session));
   if (cookiearray.length == 0){
-    console.log("no cookies server side for skillmanager");
     return res.send("no cookies")
   }
   else {
@@ -48,7 +46,6 @@ router.get('/skillboard',function(req,res,next){
     .join('users', 'users.id','skill_cards.user_id')
     .then(function(result){
       req.responseObj.skillCards = result;
-      console.log(result);
       res.send(req.responseObj);
     })
     .catch(function(err){
@@ -58,16 +55,13 @@ router.get('/skillboard',function(req,res,next){
 
 
 router.post('/skillboard', (req, res, next)=>{
-  console.log(req.body);
   knex('interested')
     .insert(req.body)
     .returning('*')
     .then(function(intPost){
-      console.log(intPost);
       return res.send("Message sent!");
     })
     .catch((err)=>{
-      console.log(err);
       return res.status(400).send(err);
     });
 });

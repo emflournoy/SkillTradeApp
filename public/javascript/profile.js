@@ -14,13 +14,12 @@ $(document).ready(function() {
     } else {
       let $makeProfile = $("#modalbtn");
       $makeProfile.hide();
-      console.log(data[0]);
       createProfile(data[0]);
     }
 
   })
   .fail(() => {
-    console.log('/GETnot working');
+    console.log('/GET not working');
   });
 //END OF COOKIE CHECKING AND REDIRECTING =======================
 $('#modalbtn').on('click', (event)=>{
@@ -69,9 +68,7 @@ $('#profileSubmit').on('click', (event)=> {
       if (response.status == "connected" && response.status!==undefined){
         loginResponse = response.authResponse.userID;
         profileFormObj.login = loginResponse;
-        // userInputs.email = loginResponse;           // this line was added to overcome the database table that wants a unique email (too hard to correct the table format)
         loggedin = true;
-        console.log(profileFormObj.login);
         return profileFormObj.login;
       }
     });
@@ -92,7 +89,6 @@ $('#profileSubmit').on('click', (event)=> {
     dataType: 'json',
   })
   .done((data) => {
-    console.log(data);
     $('#newCardModal').modal('hide');
     createProfile(data[0]);
   })
