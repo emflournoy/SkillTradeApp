@@ -15,7 +15,7 @@ $(document).ready(function() {
   .fail(() => {
     console.log('/GETnot working');
   });
-//END OF COOKIE CHECKING AND REDIRECTING ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//END OF COOKIE CHECKING AND REDIRECTING =====================================
 
 //LOGOUT FUNCTIONALITY ===============================
 $('#logoutButton').on('click', function(){

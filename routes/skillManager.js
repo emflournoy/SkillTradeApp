@@ -38,14 +38,20 @@ router.get('/skillManager', function(req, res, next) {
       })
     })
   });
-
+router.get('/skillManager', (req, res, next)=>{
+  knex('interested')
+  .join('users', 'user_id','users.id')
+  .join('skill_cards', 'skill_cards_id', 'skill_cards.id')
+  .then((data3)=>{
+    req.responseObj.interested = data3;
+    next()
+  })
+})
 
 router.get('/skillManager', (req, res, next)=>{
-  console.log("SM get is working",req.session);
   getSkillCards(req.session.userID)
     .then(function(result){
       req.responseObj.skillCards = result;
-      console.log(result);
       res.send(req.responseObj);
     });
 });
