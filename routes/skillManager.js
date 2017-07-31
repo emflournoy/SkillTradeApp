@@ -38,6 +38,7 @@ router.get('/skillManager', function(req, res, next) {
       })
     })
   });
+
 router.get('/skillManager', (req, res, next)=>{
   knex('interested')
   .join('users', 'user_id','users.id')
@@ -51,6 +52,7 @@ router.get('/skillManager', (req, res, next)=>{
 router.get('/skillManager', (req, res, next)=>{
   getSkillCards(req.session.userID)
     .then(function(result){
+      console.log(result);
       req.responseObj.skillCards = result;
       res.send(req.responseObj);
     });

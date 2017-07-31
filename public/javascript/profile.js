@@ -99,7 +99,7 @@ $('#profileSubmit').on('click', (event)=> {
 //CREATE PROFILE PAGES=========================
 function createProfile (data) {
   let $profileCard = $('#profilePage');
-  let $name = $profileCard.find('#profile-name');
+  let $name = $profileCard.find('#profile-name')
   $name.text(data.first_name + " " + data.last_name);
   let $profileBody = $('.panel-body');
   let $profileImg= $profileBody.find('#profileImg');

@@ -185,9 +185,10 @@ $('#intSubmit').on('click', (event)=> {
     data: JSON.stringify(interested_obj),
     dataType: 'json',
   })
-  // .done((data) => {
-  //   $('#interestedModal').modal('hide');
-  // })
+  .done((data) => {
+    console.log(data);
+    $('#interestedModal').modal('hide');
+  })
   .fail((err) => {
     $('#interestedModal').modal('hide');
     console.log(err);

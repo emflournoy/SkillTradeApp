@@ -59,7 +59,7 @@ router.post('/skillboard', (req, res, next)=>{
     .insert(req.body)
     .returning('*')
     .then(function(intPost){
-      return res.send("Message sent!");
+      return res.send(intPost);
     })
     .catch((err)=>{
       return res.status(400).send(err);

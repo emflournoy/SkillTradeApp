@@ -39,6 +39,7 @@ $('#modalbtn').on('click', (event)=>{
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
 $.getJSON('/skillManager')
     .done((response) => {
+      console.log(response);
       let allArr = response['allArr'];
       let skillCards = response['skillCards'];
       createDropdowns(allArr[0], 'catItem', 'categoryDropdown');
