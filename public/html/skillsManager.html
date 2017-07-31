@@ -43,14 +43,14 @@
           <a class="nav-link" href="skillsManager.html">Skill Manager</a>
         </li>
 
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li> -->
+
         <li class="nav-item navbar-toggler-right">
           <button class="btn btn-outline-secondary btn-sm" id="logoutButton" href="../index.html">Logout</button>
         </li>
 
-
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="profile.html">Profile</a>
-        </li> -->
 
       </ul>
     </div>
@@ -81,7 +81,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="newCardModalBody">
 
             <!-- FORM -->
             <div class="container" id = "sManagerBody">
@@ -125,7 +125,7 @@
 
               <div class="col-md-6">
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-outline-secondary btn-secondary dropdown-toggle" type="button" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     select a category
                   </button>
                   <div class="dropdown-menu scrollable-menu" id="categoryDropdown" aria-labelledby="dropdownMenuButton">
@@ -136,7 +136,7 @@
 
               <div class="col-md-6">
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-outline-secondary btn-secondary dropdown-toggle" type="button" id="environments" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     select an environment
                   </button>
                   <div class="dropdown-menu scrollable-menu" id="environmentDropdown" aria-labelledby="dropdownMenuButton">
@@ -148,7 +148,7 @@
               <div class="col-md-12"><br></div>
 
               <div class="col-md-2 col-xs-4">
-                <button type="button" id="skillSubmit" class="btn btn-outline-* btn-lg">submit</button>
+                <button type="button" id="skillSubmit" class="btn btn-outline-secondary btn-lg">submit</button>
               </div>
 
             </div>

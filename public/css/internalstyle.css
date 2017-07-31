@@ -209,7 +209,7 @@ label {
 
 
 /* -- buttons --------------------------------- */
-#submit {
+#submit{
   background-color: #DC5C05;
   border-color: #ccc;
   width: 150px;
@@ -252,7 +252,7 @@ label {
   border-radius: 3px;
 }
 
-#modalbtn {
+#modalbtn{
   color: white;
   background-color:#FFAC00;
   border-color: white;
@@ -264,14 +264,15 @@ label {
   border-color: white;
 }
 
-.modal-body {
+#newCardModalBody {
   min-height: 550px;
   overflow-y: auto;
 }
 
 /* -- nav ------------------------------------- */
 .navbar{
-  background-color: #6EC5B8;
+  background-color: #315853;
+  color: white;
 }
 
 .navbar .navbar-brand{
@@ -282,7 +283,20 @@ label {
 }
 
 .navbar .navbar-brand:hover{
-  color: #FFAC00;
+  color: white;
+  cursor: default;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,   .navbar-light .navbar-nav .open>.nav-link {
+  color: white;
+  font-weight: normal;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #DC5C05;
 }
 
 .navbar .nav-link{
@@ -295,7 +309,7 @@ label {
   color: #DC5C05;
 }
 
-#blankTradeCard{
+#blankTradeCard, #skillcardSB{
   display: none;
 }
 
@@ -350,7 +364,7 @@ label {
   font-weight: lighter;
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
   border-color: #DC5C05;
-  background-color: #f5eee5;
+  background-color: #edf7f6;
 }
 
 .card-block p{
@@ -394,7 +408,7 @@ label {
   padding-top: 20px;
 }
 
-#userCard {
+#userCard, #Cardundefined {
   display: none;
 }
 
@@ -433,6 +447,18 @@ label {
     margin-right: 30px;
 }
 
+#skillSubmit, #categories, #environments{
+  border-color:#DC5C05;
+  color: #DC5C05;
+  font-weight: lighter;
+}
+
+#skillSubmit:hover, #categories:hover, #environments:hover{
+  background-color:#DC5C05;
+  color: white;
+  font-weight: lighter;
+}
+
 /*--Filter buttons-----------------*/
 
 h3{
@@ -460,4 +486,67 @@ h3{
 
 #envButton , #catButton{
   display: none;
+}
+
+#clearEnv, #clearCat{
+  background-color: #fadea5;
+  border-color: #FFAC00;
+  font-weight: 400;
+
+}
+
+#clearEnv:hover, #clearCat:hover{
+  background-color: #dab66d;
+}
+
+
+/*--Filter buttons-----------------*/
+#interestedModalbody{
+  min-height: 500px;
+  overflow-y: auto;
+}
+
+/*--------PROFILE PAGE------------*/
+#profileImg{
+  height: 60vh;
+}
+.linkButton{
+  border-color:#DC5C05;
+  color: #DC5C05;
+  font-weight: lighter;
+  background-color: white;
+}
+
+#linkButton:hover{
+  background-color:#DC5C05;
+  color: white;
+  font-weight: lighter;
+}
+
+#categoryDropdown{
+  max-height: 300px;
+}
+#environmentDropdown{
+  max-height: 300px;
+}
+
+.categoryDropdownBoard{
+  max-height: 100000px;
+}
+.environmentDropdownBoard{
+  max-height: 100000px;
+}
+
+#categories{
+
+  background-color: #c4e4e0;
+  font-weight: lighter;
+  color: #315853;
+  border-color: #5ab1a6;
+}
+#environments{
+  background-color: #c4e4e0;
+  font-weight: lighter;
+  color: #315853;
+  border-color: #5ab1a6;
 }

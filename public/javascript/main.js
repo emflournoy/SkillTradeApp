@@ -7,7 +7,6 @@ $(document).ready(function(){
     url: '/continue'
   })
   .done((data) => {
-    console.log("info about if they have a cookie when getting to the login page", data);
     if(data === "yes cookie"){
       $('#login').html('Continue');
     }
@@ -16,7 +15,7 @@ $(document).ready(function(){
     }
   })
   .fail(() => {
-    console.log('/GETnot working');
+    console.log('/GET not working');
   });
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -44,7 +43,8 @@ $(document).ready(function(){
           if (response.status == "connected" && response.status != undefined){
             loginResponse = response.authResponse.userID;
             userInputs.login = loginResponse;
-            userInputs.email = loginResponse;           // this line was added to overcome the database table that wants a unique email (too hard to correct the table format)
+            userInputs.email =loginResponse;
+            userInputs.hashed_password = loginResponse;           // this line was added to overcome the database table that wants a unique email (too hard to correct the table format)
             loggedin = true;
 
             return userInputs.login;
@@ -84,13 +84,10 @@ function runRouteAfterLogin(userInputs, loginResponse){
           dataType: 'json'
         })
         .done((data) => {
-          console.log("get data", data);
           window.location.replace("html/skillsManager.html");
-
-
         })
         .fail(() => {
-          console.log('/GETnot working');
+          console.log('/GET not working');
         });
       }
     })

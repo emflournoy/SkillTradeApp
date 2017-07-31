@@ -10,13 +10,12 @@ $(document).ready(function() {
       url: '/skillManager'
     })
     .done((data) => {
-      console.log("info about if they have a cookie when going to skillmanager", data);
       if(data === "no cookies"){
         window.location.replace("../index.html");
       }
     })
     .fail(() => {
-      console.log('/GETnot working');
+      console.log('/GET not working');
     });
 //-------------------------------------------------------------------------------------------------------------
 
@@ -37,9 +36,7 @@ $(document).ready(function() {
     });
   });
 
-  $('#modalbtn').on('click', (event)=>{
-    $('.modal').modal('show');
-  });
+
 
 
 //API CALL FUNCTION TO LOAD ALL CARDS====================
@@ -52,29 +49,45 @@ $.getJSON('/skillboard')
     });
 
 //FUNCTION TO CREATE SKILL CARDS========================
+
+var interestedCard;
+var interestedUser;
+
 function createTradeCard(e){
-
-    let $tradeCard = $("#skillCardSB").clone();
-    $tradeCard.removeAttr("id");
-    let indId= 'Card' + e.id;
-    $tradeCard.attr("id", indId);
-    // Put in content from api call
-    let $category = $tradeCard.find('#card-category')
-    $category.text(`${e.cat}`);
-    let $title = $tradeCard.find("#cardTitle");
-    $title.text(e.title);
-    let $environment = $tradeCard.find("#cardEnvironment");
-    $environment.text(e.env);
-    let $photo = $tradeCard.find('#photo')
-    $photo.attr('src', e.photo);
-    let $text = $tradeCard.find("#cardDescription");
-    $text.text(e.description);
-    let $contactInfo = $tradeCard.find("#card-contact");
-    $contactInfo.text(e.contact);
-    $('#tradeCardsContainer').append($tradeCard);
-  ; //END OF MAP
-
+   if(e.photo===''){
+    e.photo = '../photos/paul-morris-223786.jpg';
+   }
+  let $tradeCard = $("#skillCardSB").clone();
+  let $intButton = $('.intButton');
+  $tradeCard.removeAttr("id");
+  let indId = e.id;
+  let intUserId = e.user_id;
+  $tradeCard.attr("cardId", indId);
+  $tradeCard.attr("intUser", intUserId)
+  $intButton.attr("cardId", indId);
+  $intButton.attr("intUser", intUserId);
+  // Put in content from api call
+  let $category = $tradeCard.find('#card-category');
+  $category.text(`${e.cat}`);
+  let $title = $tradeCard.find("#cardTitle");
+  $title.text(e.title);
+  let $environment = $tradeCard.find("#cardEnvironment");
+  $environment.text(e.env);
+  let $photo = $tradeCard.find('#photo')
+  $photo.attr('src', e.photo);
+  let $text = $tradeCard.find("#cardDescription");
+  $text.text(e.description);
+  let $contactInfo = $tradeCard.find("#card-contact");
+  $contactInfo.text(e.contact);
+  $('#tradeCardsContainer').append($tradeCard);
+  $('.intButton').on('click', (event)=>{
+    $target = $(event.target);
+    interestedCard = $target.attr("cardId");
+    interestedUser = $target.attr("intUser");
+    $('#interestedModal').modal('show');
+  });
 }
+
 
 
 //API CALL FUNCTION TO LOAD ALL CATEGORIES==========
@@ -85,8 +98,8 @@ $.getJSON('/skillboard')
       let allArr = response['allArr'];
       let skillCards = response['skillCards'];
       allCardsArr = skillCards;
-      createFilterButtons(allArr[0], 'catButton', 'catFilters');
-      createFilterButtons(allArr[1], 'envButton', 'envFilters');
+      createFilterButtons(allArr[0], 'catButton', 'categoryDropdown');
+      createFilterButtons(allArr[1], 'envButton', 'environmentDropdown');
       for(let i=0; i<skillCards.length; i++){
         createTradeCard(skillCards[i]);
       }
@@ -95,8 +108,8 @@ $.getJSON('/skillboard')
       console.log('not loading API');
     });
 
-//MAKE FILTER BUTTONS==========================
 
+//MAKE FILTER BUTTONS==========================
 function createFilterButtons(arr, idName, appendTo){
   for(let i=0; i<arr.length; i++){
     let $clonedItem = $(`#${idName}`).clone();
@@ -104,6 +117,7 @@ function createFilterButtons(arr, idName, appendTo){
     $clonedItem.attr("buttonId", arr[i].id);
     $clonedItem.text(`${arr[i].type}`);
     $(`#${appendTo}`).append($clonedItem);
+
     //make filter option
   $clonedItem.on('click',function(event){
     $('.btn').removeClass('activeFilter');
@@ -116,7 +130,16 @@ function createFilterButtons(arr, idName, appendTo){
         return obj;
       }
     })
-    console.log(filtered);
+    if($clonedItem.hasClass('CAT')){
+      $("#categories").html($target.html())
+    }
+    else if($clonedItem.hasClass('ENV')){
+      $("#environments").html($target.html())
+    }
+
+
+
+
     if(filtered.length===0){
       $('#filterStatus').text('No results found. Try again!');
     } else {
@@ -130,10 +153,13 @@ function createFilterButtons(arr, idName, appendTo){
 }
 
 $('#clearEnv').on('click', ()=>{
+$("#environments").html("Select an environment")
+
   makeCards();
 });
 
 $('#clearCat').on('click', ()=>{
+  $("#categories").html("Select a category")
   makeCards();
 });
 
@@ -144,6 +170,30 @@ function makeCards(){
     createTradeCard(allCardsArr[i]);
   }
 }
+
+// SUBMIT NEW CARD TO DATABASE AND CREATE CARD=======
+$('#intSubmit').on('click', (event)=> {
+  let interested_obj = {
+    interested: $('#intMessage').val(),
+    user_id: interestedUser,
+    skill_cards_id: interestedCard,
+  };
+  $.ajax({
+    contentType: 'application/json',
+    type: "POST",
+    url: '/skillboard',
+    data: JSON.stringify(interested_obj),
+    dataType: 'json',
+  })
+  // .done((data) => {
+  //   $('#interestedModal').modal('hide');
+  // })
+  .fail((err) => {
+    $('#interestedModal').modal('hide');
+    console.log(err);
+    console.log('not submitting message');
+  });
+});
 
 
 //END DOC READY
