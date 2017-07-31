@@ -25,7 +25,6 @@ router.get('/profile', (req, res, next)=>{
   knex('users')
     .where('id', req.session.userID)
     .then(function(result){
-      console.log(result);
       return res.send(result);
     });
 });
@@ -42,12 +41,10 @@ router.patch('/profile', (req,res,next) => {
       knex('users')
       .where('login', parseInt(req.body.login))
       .then((data)=>{
-        console.log(data);
         return res.send(data);
       })
     })
     .catch((err)=>{
-      console.log(err);
       return res.send(err);
     });
 })

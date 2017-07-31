@@ -7,13 +7,12 @@ $(document).ready(function() {
     url: '/skillManager'
   })
   .done((data) => {
-    // console.log("info about if they have a cookie when going to skillmanager", data);
     if(data === "no cookies"){
       window.location.replace("../index.html");
     }
   })
   .fail(() => {
-    console.log('/GETnot working');
+    console.log('/GET not working');
   });
 //END OF COOKIE CHECKING AND REDIRECTING =====================================
 
